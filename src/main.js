@@ -1,5 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
 
+
 //import { MyFunction } from './lib/index.js';
 
 function registro(){
@@ -10,3 +11,10 @@ function registro(){
     console.log()
 
 }
+=======
+/*
+import { myFunction } from './lib/index.js';
+
+myFunction();
+*/
+
