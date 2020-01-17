@@ -1,7 +1,10 @@
 {
+<<<<<<< HEAD
   "database": {
     "rules": "database.rules.json"
   },
+=======
+>>>>>>> 821eff9387b9d4cc398e662cacc1e6e83ff6ed65
   "hosting": {
     "public": "src",
     "ignore": [
@@ -15,8 +18,11 @@
         "destination": "/index.html"
       }
     ]
+<<<<<<< HEAD
   },
   "storage": {
     "rules": "storage.rules"
+=======
+>>>>>>> 821eff9387b9d4cc398e662cacc1e6e83ff6ed65
   }
 }
