@@ -1,7 +1,161 @@
+/*Eliminar margen y padding que ponen navegadores por defecto*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
 body {
-    width:100%;
-    background-image: url(./board-black.jpg);
-    background-size: cover;
-    background-position: bottom center;
-    background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
+  /* Elimina desplazamiento horizontal (scroll) */
+  overflow-x: hidden;
+  background-image: url('img/background.jpg');
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: cover;
+}
+
+.login {
+  width: 350px;
+  margin: 10px auto;
+  text-align: center;
+  color: white;
+}
+
+.login__logo {
+  margin-top: 10px;
+  width: 150px;
+}
+
+.login__title {
+  font-size: 30px;
+}
+
+.login__form {
+  padding: 25px 25px 0;
+}
+
+.login__inputText, .login__inputPass {
+  font-size: 15px;
+  width: 80%;
+  padding: 10px;
+  border: none;
+}
+
+.login__container {
+  text-align: right;
+}
+
+.login__inputMail, .login__inputPassword, .login__inputName {
+  margin-bottom: 15px;
+  border: 1px solid #fff;
+}
+
+.icon {
+  min-width: 50px;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+}
+
+.login__acceptService {
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.login__button {
+  /* display: block;
+  margin: 0 auto; */
+  border: none;
+  width: 30%;
+  color: black;
+  font-size: 15px;
+  background: #aaa;
+  padding: 10px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 30%;
+}
+
+.login__button:hover, .btn__rrss:hover {
+  background: #E58E00;
+  transition: background .5s;
+}
+
+.login__divider {
+  text-align: center;
+  margin-top: 5px;
+}
+
+hr {
+  display: inline-block;
+  width: 45%;
+}
+
+.btn__rrss {
+  padding: 5px 10px;
+  margin: 5px 5%;
+  width: 20%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+
+}
+
+.btn__icon {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.login__forget {
+  margin: 20px auto 10px;
+  text-align: center;
+}
+
+.login__register {
+  margin: 20px auto;
+}
+
+.login__linkRecover {
+  margin-left: 10px;
+  color: #aaa;
+  font-size: 17px;
+}
+
+.login__linkRecover:hover {
+  color: #E58E00;
+}
+
+.login__linkRegister {
+  margin-left: 10px;
+  color: #E58E00;
+  font-size: 17px;
+}
+
+.login__linkRegister:hover {
+  color: #aaa;
+}
+
+.login__acceptService {
+  margin-top: 10px;
+}
+
+.accept {
+  margin-bottom: 20px;
+}
+
+#register {
+  display: none;
+}
+
+@media(min-width:768px) {
+  .login {
+    margin: 50px auto;
+  }
 }

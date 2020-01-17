@@ -3,18 +3,25 @@
 
 //import { MyFunction } from './lib/index.js';
 
-function registro(){
-    let nombre = document.getElementById('nombre').Value;
-    let email = document.getElementById('email').Value;
-    let contrasena = document.getElementById('contrasena').Value;
+/*---------------------------------------------------------------------*/
 
-    console.log()
+/* Pasar de login a registro si presionan botón Registrar*/
+const login = document.getElementById("login");
+const loginRegister = document.getElementById("login__btnRegister");
+const register = document.getElementById("register");
 
+loginRegister.addEventListener('click', formRegister);
+
+function formRegister() {
+  login.style.display = "none";
+  register.style.display = "block";
 }
-=======
+
+/*---------------------------------------------------------------------*/
+
+
 /*
 import { myFunction } from './lib/index.js';
 
 myFunction();
 */
-
