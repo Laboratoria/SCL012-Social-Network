@@ -1,23 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css"/>
   <title>Finger Food</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo2.png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800|Roboto:400,700&display=swap" rel="stylesheet">
+  <!-- fontawesome icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  
+  <!-- Formulario login -->
+  <section class="login" id="login">
+    <img src="img/logo2.png" alt="logo Finger Food" class="login__logo">
+    <h1 class="login__title">Bienvenid@!</h1>
+    <form class="login__form">
+      <div class="login__container">
+        <div class="login__inputMail">
+          <i class="fas fa-envelope icon"></i>
+          <input type="email" class="login__inputText" id="login__email" placeholder="Correo Electrónico">
+        </div>
+        <div class="login__inputPassword">
+          <i class="fas fa-key icon"></i>
+          <input type="password" class="login__inputPass" id="login__pass" placeholder="Contraseña">
+        </div>
+        <p class="login__acceptService">Al continuar, aceptas nuestras condiciones del servicio.</p>
+        <input type="checkbox" name="remember" id="login__remember" value="remember"> Recuérdame
+        <input type="submit" value="Acceder" id="login__accept" class="login__button">
+        <p class="login__forget">¿Olvidó su contraseña?<a class="login__linkRecover" id="login__recover" href="#">Recuperar</a></p>
+      </div>
+    </form>
+    <div class="login__divider">
+      <hr>
+      <span>o</span>
+      <hr>
+    </div>
+    <button type="button" name="btn__google" class="btn__rrss" id="login__google1">
+      <img src="img/googleColor.svg" alt="logo Google" class="btn__icon">
+    </button>
+    <button type="button" name="btn_facebook" class="btn__rrss" id="login__facebook1">
+      <img src="img/facebook.svg" alt="logo Google" class="btn__icon">
+    </button>
+    <p class="login__acceptService">Al continuar, aceptas nuestras condiciones del servicio.</p>
+    <p class="login__register">¿No tienes una cuenta?<a class="login__linkRegister" id="login__btnRegister" href="#register">Regístrate</a></p>
+  </section>
+  <!-- Formulario registro -->
+  <section class="login" id="register">
+    <img src="img/logo2.png" alt="logo Finger Food" class="login__logo">
+    <h1 class="login__title">Regístrate!</h1>
+    <form class="login__form">
+      <div class="login__container">
+        <div class="login__inputName">
+          <i class="fas fa-user icon"></i>
+          <input type="text" class="login__inputText" id="register__name" placeholder="Nombre y apellido">
+        </div>
+        <div class="login__inputMail">
+          <i class="fas fa-envelope icon"></i>
+          <input type="email" class="login__inputText" id="register__mail" placeholder="Correo Electrónico">
+        </div>
+        <div class="login__inputPassword">
+          <i class="fas fa-key icon"></i>
+          <input type="password" class="login__inputPass" id="register__pass" placeholder="Contraseña">
+        </div>
+        <p class="login__acceptService">Al continuar, aceptas nuestras condiciones del servicio.</p>
+        <input type="submit" value="Registrar" class="login__button" id="register__btn">
+      </div>
+    </form>
+    <div class="login__divider">
+      <hr>
+      <span>o</span>
+      <hr>
+    </div>
+    <button type="button" name="btn__google" class="btn__rrss" id="login__google2">
+      <img src="img/googleColor.svg" alt="logo Google" class="btn__icon">
+    </button>
+    <button type="button" name="btn_facebook" class="btn__rrss" id="login__facebook2">
+      <img src="img/facebook.svg" alt="logo Google" class="btn__icon">
+    </button>
+    <p class="login__acceptService accept">Al continuar, aceptas nuestras condiciones del servicio.</p>
+  </section>
 
   <div id="root"></div>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+  <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-
 <script>
   // Your web app's Firebase configuration
   let firebaseConfig = {
@@ -34,4 +110,5 @@
 </script>
   <script type="module" src="main.js"></script>
 </body>
+
 </html>
