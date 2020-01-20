@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css"/>
   <title>Finger Food</title>
 
- 
 </head>
 <body>
+  <h1 style="color: #fff;">Finger Food</h1>
+  <p>Recomendaciones comidas</p>
 
   <input id="nombre" type="nombre" placeholder="Nombre">
   <input id="email" type="email" placeholder="Email">
   <input id="contrasena" type="contrasena" placeholder="Contraseña">
   <button onclick="registro()">Registrarse</button>
 
+  <div id="root"></div>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAewAJTAGvRk5IyI8jCQ3l3DVsquWzRJVk",
+    authDomain: "finger-food.firebaseapp.com",
+    databaseURL: "https://finger-food.firebaseio.com",
+    projectId: "finger-food",
+    storageBucket: "finger-food.appspot.com",
+    messagingSenderId: "149879562380",
+    appId: "1:149879562380:web:a1833f949d2ad67d2b9ba9"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
   <script type="module" src="main.js"></script>
 </body>
 </html>

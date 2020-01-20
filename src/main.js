@@ -10,3 +10,6 @@ function registro(){
     console.log()
 
 }
+
+
+
