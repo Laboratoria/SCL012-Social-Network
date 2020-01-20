@@ -62,7 +62,7 @@ registerBtn.addEventListener('click', function register() {
     });
 });
 // observador: authentication state observer and get user data 
-/*
+
 function observador () {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -82,7 +82,7 @@ function observador () {
   });
 }
 observador();
-*/
+
 /*--------------------------------------------------------------------- */
 /* Pasar de login a registro si presionan botón Registrar*/
 const login = document.getElementById('login');
