@@ -4,9 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Social Network</title>
 </head>
 <body>
+  <h1>Dove PLayer</h1>
+  
+<div id="root">
+  <h4>Ingreso de Usuarios</h4>
+  <input id="email" type="email" placeholder="ingresa tu Email">
+  <input id="password" type="password" placeholder="Ingresa tu contraseña">
+  <button id="logIn">Iniciar Sesión</button>
+  <button id="registerMe">Registrarme</button>
+</div>
+
   <script type="module" src="main.js"></script>
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCJK1y95OD8KAEsm8rzYjeZLcwyJ6Hfa5A",
+    authDomain: "social-network-7c958.firebaseapp.com",
+    databaseURL: "https://social-network-7c958.firebaseio.com",
+    projectId: "social-network-7c958",
+    storageBucket: "social-network-7c958.appspot.com",
+    messagingSenderId: "533235702935",
+    appId: "1:533235702935:web:5b58d0628a18cc8c51ddd2",
+    measurementId: "G-N8NJGBC7MR"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 </body>
 </html>
