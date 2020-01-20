@@ -12,10 +12,10 @@ body {
     /* Elimina desplazamiento horizontal (scroll) */
     overflow-x: hidden;
     width:100%;
-    background-image: url('img/background.jpg');
+    background-image: url(/src/background.jpg);
     background-size: cover;
-    background-position: center;
-    background-repeat: repeat-y;
+    background-position: bottom center;
+    background-repeat: no-repeat;
 }
 
 .login {
