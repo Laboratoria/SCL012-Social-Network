@@ -2,6 +2,11 @@
 
 
 //import { MyFunction } from './lib/index.js';
+/*
+import { myFunction } from './lib/index.js';
+
+myFunction();
+*/
 
 /*---------------------------------------------------------------------*/
 
@@ -18,10 +23,3 @@ function formRegister() {
 }
 
 /*---------------------------------------------------------------------*/
-
-
-/*
-import { myFunction } from './lib/index.js';
-
-myFunction();
-*/
