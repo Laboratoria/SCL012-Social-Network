@@ -146,21 +146,16 @@ registerBtn.addEventListener('click', function register() {
   const regEmail = document.getElementById('register__mail').value;
   const regPass = document.getElementById('register__pass').value;
 
-// function de login para usuarios existentes
-let loginBtn = document.getElementById('login__accept');
-loginBtn.addEventListener("click", function login() {
-  let email = document.getElementById('email').value;
-  let contrasena = document.getElementById('contrasena').value;
+  firebase.auth().createUserWithEmailAndPassword(regName, regEmail, regPass).catch(function(error) {
+    // Handle Errors here.
+    let errorCode2 = error.code;
+    let errorMessage2 = error.message;
+    console.log(errorCode2);
+    console.log(errorMessage2);
+  });
+});
 
-  firebase.auth().signInWithEmailAndPassword(email, contrasena)
-    .catch(function(error) {
-      // Handle Errors here.
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-    });
-})
+
 // observador: authentication state observer and get user data
 function observador() {
   firebase.auth().onAuthStateChanged(function(user) {
@@ -185,4 +180,4 @@ observador();
 /*---------------------------------------------------------------------*/
 
 
-/*---------------------------------------------------------------------*/
+
