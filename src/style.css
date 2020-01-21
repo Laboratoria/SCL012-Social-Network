@@ -8,65 +8,66 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  /* Elimina desplazamiento horizontal (scroll) */
-  overflow-x: hidden;
-  background-image: url('img/background.jpg');
-  background-repeat: repeat-y;
-  background-position: center;
-  background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    /* Elimina desplazamiento horizontal (scroll) */
+    overflow-x: hidden;
+    width:100%;
+    background-image: url('img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
 }
 
-.login {
-  width: 350px;
-  margin: 10px auto;
+.login, .register {
+  width: 21.875rem;
+  margin: 0.625rem auto;
   text-align: center;
   color: white;
 }
 
-.login__logo {
-  margin-top: 10px;
-  width: 150px;
+.login__logo, .register__logo {
+  margin-top: 0.625rem;
+  width: 9.375rem;
 }
 
-.login__title {
-  font-size: 30px;
+.login__title, .register__title {
+  font-size: 1.875rem;
 }
 
-.login__form {
-  padding: 25px 15px 0;
+.login__form, .register__form {
+  padding: 1.5625rem 0.9375rem 0;
 }
 
-.login__inputText, .login__inputPass {
-  font-size: 15px;
+.login__inputText, .login__inputPass, .register__inputText, .register__inputPass {
+  font-size: 0.9375rem;
   width: 80%;
-  padding: 10px;
+  padding: 0.625rem;
   border: none;
 }
 
-.login__container {
+.login__container, .register__container {
   text-align: right;
 }
 
-.login__inputMail, .login__inputPassword, .login__inputName {
-  margin-bottom: 15px;
+.login__inputMail, .login__inputPassword, .login__inputName, .register__inputMail, .register__inputPassword, .register__inputName {
+  margin-bottom: 0.9375rem;
   border: 1px solid #fff;
 }
 
 .icon {
-  min-width: 50px;
+  min-width: 3.125rem;
   text-align: center;
   vertical-align: middle;
   color: #fff;
 }
 
-.login__acceptService {
+.login__acceptService, .register__acceptService {
   font-size: 12px;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
 }
 
-.login__button {
+.login__button, .register__button {
   /* display: block;
   margin: 0 auto; */
   border: none;
@@ -74,20 +75,20 @@ body {
   color: black;
   font-size: 15px;
   background: #aaa;
-  padding: 10px 5px;
-  border-radius: 5px;
+  padding: 0.625rem 0.3125rem;
+  border-radius: 0.3125rem;
   cursor: pointer;
   margin-left: 30%;
 }
 
-.login__button:hover, .btn__rrss:hover {
+.login__button:hover, .btn__rrss:hover, .register__button:hover {
   background: #E58E00;
   transition: background .5s;
 }
 
-.login__divider {
+.login__divider, .register__divider {
   text-align: center;
-  margin-top: 5px;
+  margin-top: 0.3125rem;
 }
 
 hr {
@@ -96,8 +97,8 @@ hr {
 }
 
 .btn__rrss {
-  padding: 5px 10px;
-  margin: 5px 5%;
+  padding: 0.3125rem 0.625rem;
+  margin: 0.3125rem 5%;
   width: 20%;
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
@@ -105,8 +106,8 @@ hr {
 }
 
 .btn__icon {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
   text-align: center;
   vertical-align: middle;
   color: #fff;
@@ -114,16 +115,16 @@ hr {
 }
 
 .login__forget {
-  margin: 20px auto 10px;
+  margin: 1.25rem auto 0.625rem;
   text-align: center;
 }
 
 .login__register {
-  margin: 20px auto;
+  margin: 1.25rem auto;
 }
 
 .login__linkRecover {
-  margin-left: 10px;
+  margin-left: 0.625rem;
   color: #aaa;
   font-size: 17px;
 }
@@ -133,7 +134,7 @@ hr {
 }
 
 .login__linkRegister {
-  margin-left: 10px;
+  margin-left: 0.625rem;
   color: #E58E00;
   font-size: 17px;
 }
@@ -143,11 +144,11 @@ hr {
 }
 
 .login__acceptService {
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 
 .accept {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 #register {
@@ -156,6 +157,6 @@ hr {
 
 @media(min-width:768px) {
   .login {
-    margin: 50px auto;
+    margin: 3.125rem auto;
   }
 }
