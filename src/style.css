@@ -143,7 +143,7 @@ hr {
   color: #aaa;
 }
 
-.login__acceptService {
+.login__acceptService, .register__acceptService {
   margin-top: 0.625rem;
 }
 

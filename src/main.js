@@ -81,13 +81,13 @@ function formRegister() {
       <span>o</span>
       <hr>
     </div>
-    <button type="button" name="btn__google" class="btn__rrss" id="login__google2">
+    <button type="button" name="btn__google" class="btn__rrss" id="register__google">
       <img src="img/googleColor.svg" alt="logo Google" class="btn__icon">
     </button>
-    <button type="button" name="btn_facebook" class="btn__rrss" id="login__facebook2">
+    <button type="button" name="btn_facebook" class="btn__rrss" id="register__facebook">
       <img src="img/facebook.svg" alt="logo Google" class="btn__icon">
     </button>
-    <p class="login__acceptService accept">Al continuar, aceptas nuestras condiciones del servicio.</p>
+    <p class="register__acceptService accept">Al continuar, aceptas nuestras condiciones del servicio.</p>
   </section>
 `;
 }
