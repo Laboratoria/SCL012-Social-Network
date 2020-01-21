@@ -12,7 +12,7 @@ body {
     /* Elimina desplazamiento horizontal (scroll) */
     overflow-x: hidden;
     width:100%;
-    background-image: url(/src/img/background.jpg);
+    background-image: url('img/background.jpg');
     background-size: cover;
     background-position: bottom center;
     background-repeat: no-repeat;
@@ -149,10 +149,6 @@ hr {
 
 .accept {
   margin-bottom: 1.25rem;
-}
-
-#register {
-  display: none;
 }
 
 @media(min-width:768px) {

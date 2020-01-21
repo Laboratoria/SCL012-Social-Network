@@ -2,24 +2,24 @@
 // import { MyFunction } from './lib/index.js';
 
 /*---------------------------------------------------------------------------------*/
-const root = document.getElementById("root");
+const root = document.getElementById('root');
 
 /* Cargar ingreso cuando se cargue página */
-window.addEventListener("load", start, false);
+window.addEventListener('load', start, false);
 
 function start() {
   /* Formulario login */
-  root.innerHTML = `<section class="login" id="login">
-    <img src="img/logo2.png" alt="logo Finger Food" class="login__logo">
-    <h1 class="login__title">Bienvenid@!</h1>
-    <form class="login__form">
-      <div class="login__container">
-        <div class="login__inputMail">
-          <i class="fas fa-envelope icon"></i>
-          <input type="email" class="login__inputText" id="login__email" placeholder="Correo Electrónico">
+  root.innerHTML = `<section class='login' id='login'>
+    <img src='img/logo2.png' alt='logo Finger Food' class='login__logo'>
+    <h1 class='login__title'>Bienvenid@!</h1>
+    <form class='login__form'>
+      <div class='login__container'>
+        <div class='login__inputMail'>
+          <i class='fas fa-envelope icon'></i>
+          <input type='email' class='login__inputText' id='login__email' placeholder='Correo Electrónico'>
         </div>
-        <div class="login__inputPassword">
-          <i class="fas fa-key icon"></i>
+        <div class='login__inputPassword'>
+          <i class='fas fa-key icon'></i>
           <input type="password" class="login__inputPass" id="login__pass" placeholder="Contraseña">
         </div>
         <p class="login__acceptService">Al continuar, aceptas nuestras condiciones del servicio.</p>
@@ -42,14 +42,14 @@ function start() {
     <p class="login__acceptService">Al continuar, aceptas nuestras condiciones del servicio.</p>
     <p class="login__register">¿No tienes una cuenta?<a class="login__linkRegister" id="login__btnRegister" href="#register">Regístrate</a></p>
   </section>`;
-};
+}
 
-/*---------------------------------------------------------------------------------*/
+/* --------------------------------------------------------------------------------- */
 
-/* Pasar de login a registro si presionan botón Registrar*/
-const login = document.getElementById("login");
-const loginRegister = document.getElementById("login__btnRegister");
-const register = document.getElementById("register");
+/* Pasar de login a registro si presionan botón Registrar */
+const login = document.getElementById('login');
+const loginRegister = document.getElementById('login__btnRegister');
+const register = document.getElementById('register');
 
 loginRegister.addEventListener('click', formRegister);
 
@@ -158,7 +158,7 @@ registerBtn.addEventListener('click', function register() {
 
 // observador: authentication state observer and get user data
 function observador() {
-  firebase.auth().onAuthStateChanged(function(user) {
+  firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
       let displayName = user.displayName;
