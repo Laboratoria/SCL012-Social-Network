@@ -1,5 +1,5 @@
 // Este es el punto de entrada de tu aplicacion
-//import { MyFunction } from './lib/index.js';
+// import { MyFunction } from './lib/index.js';
 
 /*---------------------------------------------------------------------------------*/
 const root = document.getElementById("root");
@@ -100,36 +100,51 @@ function formRegister() {
 firebase.initializeApp({
   apiKey: 'AIzaSyAewAJTAGvRk5IyI8jCQ3l3DVsquWzRJVk',
   authDomain: 'https://finger-food.firebaseapp.com/',
-  projectId: 'finger-food'
+  projectId: 'finger-food',
 });
 // BASE DE DATOS
-let database = firebase.firestore();
+const database = firebase.firestore();
 // Add data --  Usuarios
-database.collection("users").add({
-    user: "username",
-    email: "email",
-    password: "password"
+database.collection('users').add({
+  user: 'username',
+  email: 'email',
+  password: 'password',
+})
+  .then(function (docRef) {
+    console.log('Document written with ID: ', docRef.id);
   })
-  .then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-  })
-  .catch(function(error) {
-    console.error("Error adding document: ", error);
+  .catch(function (error) {
+    console.error('Error adding document: ', error);
   });
 // Read Data -- esto lee los datos ingresados
-database.collection("users").get().then((querySnapshot) => {
+database.collection('users').get().then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
     console.log(`${doc.id} => ${doc.data()}`);
   });
 });
-// Sign up a new user -- Registro de usuario
-firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-  let errorCode = error.code;
-  let errorMessage = error.message;
-  // ...
+
+// function de login para usuarios existentes
+const loginBtn = document.getElementById('login__accept');
+loginBtn.addEventListener('click', function login() {
+  const email = document.getElementById('email').value;
+  const contrasena = document.getElementById('contrasena').value;
+
+  firebase.auth().signInWithEmailAndPassword(email, contrasena)
+    .catch(function (error) {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+    });
 });
 
+// función de registro de nuevo usuario
+const registerBtn = document.getElementById('register__btn');
+registerBtn.addEventListener('click', function register() {
+  const regName = document.getElementById('register__name').value;
+  const regEmail = document.getElementById('register__mail').value;
+  const regPass = document.getElementById('register__pass').value;
 
 // function de login para usuarios existentes
 let loginBtn = document.getElementById('login__accept');
@@ -158,10 +173,10 @@ function observador() {
       let isAnonymous = user.isAnonymous;
       let uid = user.uid;
       let providerData = user.providerData;
-      // ...
+
     } else {
-      // User is signed out.
-      console.log('no existe usuario activo')
+      // User is signed out;
+      console.log('no existe usuario activo');
     }
   });
 }
