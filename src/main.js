@@ -1,7 +1,5 @@
 // Este es el punto de entrada de tu aplicacion
-import {
-  signInNew,
-} from './lib/index.js';
+import { signInNew } from './lib/index.js';
 
 /*---------------------------------------------------------------------------------*/
 
@@ -18,8 +16,8 @@ function init() {
           <i class="fas fa-envelope icon"></i>
           <input type="email" class="login__inputText" id="login__email" placeholder="Correo Electrónico">
         </div>
-        <div class="login__inputPassword">
-          <i class="fas fa-key icon"></i>
+        <div class='login__inputPassword'>
+          <i class='fas fa-key icon'></i>
           <input type="password" class="login__inputPass" id="login__pass" placeholder="Contraseña">
         </div>
         <p class="login__acceptService">Al continuar, aceptas nuestras condiciones del servicio.</p>
