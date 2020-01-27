@@ -7,6 +7,7 @@ export const myFunction = () => {
 */
 
 /* Loguear usuario existente */
+
 export const signIn = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .catch((error) => {
