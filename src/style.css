@@ -9,6 +9,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    color: white;
     /* Elimina desplazamiento horizontal (scroll) */
     overflow-x: hidden;
     width: 100vw;
