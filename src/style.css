@@ -20,16 +20,13 @@ body {
 
 
 .login, .register{
-  width: 350px;
+  width: 21.873rem;
   margin: 10px auto;
   text-align: center;
   color: white;
 }
 
-.login__logo, .register__logo {
-  margin-top: 10px;
-  width: 150px;
-}
+
 
 .login__title,.register__title {
   font-size: 30px;
