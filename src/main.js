@@ -49,7 +49,7 @@ function init() {
 
   start();
 
-  function newPage() {
+  function newPage(displayName, email) {
     root.innerHTML = `
     <nav class="navi">
     <img src="img/logo2.png" alt="logo" class="logoNav">
@@ -58,14 +58,14 @@ function init() {
         <li class="navigation__item"><a href="#divSearch"><i class="fas fa-search icon"></i></a></li>
         <li class="navigation__item"><a href="#"><i class="fas fa-plus icon"></i></a></li>
         <li class="navigation__item"><a href="#"><i class="fas fa-user-circle fa-2x icon"></i></a></li>
-        <li class="navEmail"> user.email </li>
+        <li class="navEmail"> ${email} </li>
         <li class="navigation__item icon"><a id="closeSession" href="#"><i class="far fa-times-circle fa-2x icon"></i></a></li>
       </ul>
     </div>
   </nav>
 
   <section class="main">
-    <h1 class="welcome">Bienvenid@ <span> user.displayName </span> </h1>
+    <h1 class="welcome">Bienvenid@ <span> ${displayName} </span> </h1>
     <div class="typeSelect">
       <select id="typeFood" class="typeFood">
         <option value="all">Tipos de comida</option>
@@ -95,7 +95,6 @@ function init() {
       /* Pasar a página inicial */
       start();
     });
-
   }
 
 
@@ -103,7 +102,9 @@ function init() {
   const emailIngreso = document.getElementById('login__email');
   console.log(emailIngreso);
   const passIngreso = document.getElementById('login__pass');
+  console.log(passIngreso);
   const loginBtn = document.getElementById('login__accept');
+  console.log(loginBtn);
 
   loginBtn.addEventListener('click', () => {
     /* Verificar que existe usuario */
@@ -115,7 +116,6 @@ function init() {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         console.log('Existe usuario activo');
-        newPage();
         // User is signed in.
         let displayName = user.displayName;
         console.log(displayName);
@@ -131,6 +131,15 @@ function init() {
         console.log(uid);
         let providerData = user.providerData;
         console.log(providerData);
+        if (emailVerified) {
+          if(displayName === null){
+            displayName = '';
+          }
+          newPage(displayName, email);
+        } else if (!emailVerified) {
+          signOff();
+          start();
+        }
 
       } else {
         // User is signed out;
@@ -171,7 +180,9 @@ function init() {
     const emailRegistro = document.getElementById('register__email');
     console.log(emailRegistro);
     const passRegistro = document.getElementById('register__pass');
+    console.log(passRegistro);
     const registerBtn = document.getElementById('register__btn');
+    console.log(registerBtn);
 
     registerBtn.addEventListener('click', () => {
       /* Verificar que no existe usuario */
