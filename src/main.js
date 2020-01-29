@@ -152,7 +152,6 @@ function init() {
 
   /* Pasar de login a registro si presionan botón Registrar */
   const loginRegister = document.getElementById('login__btnRegister');
-
   loginRegister.addEventListener('click', () => {
     /* Formulario registro */
     root.innerHTML = `
@@ -175,8 +174,8 @@ function init() {
       </form>
     </section>
     `;
-    /* Guardar nuevo usuario */
-    /* const userName = document.getElementById('register__name').value; */
+   
+     /* Guardar nuevo usuario */
     const emailRegistro = document.getElementById('register__email');
     console.log(emailRegistro);
     const passRegistro = document.getElementById('register__pass');
@@ -227,7 +226,6 @@ function init() {
       });
   });
 }
-
 window.onload = init();
 
 /*---------------------------------------------------------------------------------*/

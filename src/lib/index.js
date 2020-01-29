@@ -9,14 +9,15 @@ export const myFunction = () => {
 /* Loguear usuario existente */
 
 export const signIn = (email, password) => {
+  
   firebase.auth().signInWithEmailAndPassword(email, password)
+  
     .catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
-      // ...
     });
 };
 
@@ -37,6 +38,8 @@ export const verificationEmail = () => {
 
 /* Registro nuevo usuario */
 export const signInNew = (email, password) => {
+  console.log('email', email);
+  console.log('passwrd', password);
   firebase.auth().createUserWithEmailAndPassword(email, password)
     /* .then((user) => {
       user.updateProfile({
@@ -67,6 +70,7 @@ export const signInNew = (email, password) => {
       // [END_EXCLUDE]
     });
 };
+
 
 /* Cerrar sesión */
 export const signOff = () => {
