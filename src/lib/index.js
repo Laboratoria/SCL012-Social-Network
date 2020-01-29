@@ -28,7 +28,7 @@ export const verificationEmail = () => {
   user.sendEmailVerification()
     .then(() => {
       // Email sent.
-      console.log('Se ha enviado correo de verificación');
+      alert('Se ha enviado un correo de verificación para activar su cuenta');
     })
     .catch((error) => {
       // An error happened.
@@ -62,6 +62,8 @@ export const signInNew = (email, password) => {
         alert('Ingrese email válido');
       } else if (errorCode === 'auth/weak-password') {
         alert('El password es muy débil, mínimo 6 caracteres!');
+      } else if (errorCode === 'auth/email-already-in-use') {
+        alert('La dirección de email ya está siendo utilizada');
       } else {
         console.error(error);
       }
@@ -70,3 +72,13 @@ export const signInNew = (email, password) => {
 };
 
 
+/* Cerrar sesión */
+export const signOff = () => {
+  firebase.auth().signOut()
+    .then(() => {
+      console.log('Cerrando sesión');
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
