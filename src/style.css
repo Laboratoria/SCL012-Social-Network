@@ -156,3 +156,111 @@ hr {
     margin: 3.125rem auto;
   }
 }
+
+.main {
+  text-align: center;
+}
+
+.logoNav {
+  width: 100px;
+}
+
+.navi {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  border-bottom: 1px solid white;
+}
+
+.navi h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.navigation__list {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.navigation__item a {
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+}
+
+.navigation__item {
+  padding-right: 1em;
+  color: black;
+}
+
+.navEmail {
+  margin-right: 1rem;
+}
+
+.icon {
+  min-width: 3.125rem;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+}
+
+.welcome {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.typeSelect {
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+.typeFood {
+  padding: 0.625rem;
+}
+
+.inputSearch {
+  display: inline-block;
+  margin: 0 auto;
+  margin-bottom: 0.9375rem;
+  border: 1px solid #fff;
+  width: 20%;
+}
+
+.inputText {
+  font-size: 0.9375rem;
+  width: 75%;
+  padding: 0.625rem;
+  border: none;
+}
+
+.contact {
+  margin: 5rem 0;
+  text-align: center;
+  color: white;
+}
+
+/* Tarjetas */
+.wrap {
+  margin: 50px auto 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media(max-width: 768px) {
+  .navEmail {
+    display: none;
+  }
+
+  .typeSelect {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .inputSearch {
+    width: 60%;
+  }
+}
