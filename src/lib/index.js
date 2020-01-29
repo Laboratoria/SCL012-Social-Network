@@ -69,13 +69,4 @@ export const signInNew = (email, password) => {
     });
 };
 
-/* Cerrar sesión */
-export const signOff = () => {
-  firebase.auth().signOut()
-    .then(() => {
-      console.log('Cerrando sesión');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+

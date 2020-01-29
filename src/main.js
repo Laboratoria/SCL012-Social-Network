@@ -2,6 +2,7 @@
 import {
   signInNew,
   signIn,
+  signOff,
 } from './lib/index.js';
 
 /*---------------------------------------------------------------------------------*/
@@ -55,10 +56,6 @@ function init() {
     signIn(emailIngreso.value, passIngreso.value);
     /* Pasar a página de post */
   });
-
-  function newPage() {
-    root.innerHTML = 'Solo lo ve usuario ACTIVO';
-  }
 
   function observador() {
     firebase.auth().onAuthStateChanged(function (user) {
