@@ -85,9 +85,9 @@ function init() {
   <footer id="contact" class="contact">
     <p> Finger Food 2020. Todos los derechos reservados.</p>
   </footer>`;
-// funcionalidad boton + (crear post)
-  const createPost = document.querySelector('#createPost');
-      createPost.addEventListener('click', () => {
+    // funcionalidad boton + (crear post)
+    const createPost = document.querySelector('#createPost');
+    createPost.addEventListener('click', () => {
       const postDiv = document.querySelector('#wrap');
       postDiv.innerHTML = `<section class="postPage" id="postPage">
       <div id="addPost">
@@ -95,7 +95,7 @@ function init() {
         <button name="submit" id="submit" class="submit">Publicar</button>
       </div>
     </section>
-    `
+    `;
     });
 
     /* Cerrar sesión */
@@ -125,7 +125,7 @@ function init() {
   });
 
   function observador() {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         console.log('Existe usuario activo');
         // User is signed in.
@@ -144,7 +144,7 @@ function init() {
         let providerData = user.providerData;
         console.log(providerData);
         if (emailVerified) {
-          if(displayName === null){
+          if (displayName === null) {
             displayName = '';
           }
           newPage(displayName, email);
@@ -186,8 +186,8 @@ function init() {
       </form>
     </section>
     `;
-   
-     /* Guardar nuevo usuario */
+  
+    /* Guardar nuevo usuario */
     const emailRegistro = document.getElementById('register__email');
     console.log(emailRegistro);
     const passRegistro = document.getElementById('register__pass');
@@ -211,7 +211,7 @@ function init() {
   btnGoogle.addEventListener('click', () => {
     firebase.auth()
       .signInWithPopup(provider)
-      .then(function (result) {
+      .then((result) => {
         console.log(result.user);
         /* probar poniendo foto de logueado */
         /* pasar a sección post */
@@ -228,7 +228,7 @@ function init() {
   btnFacebook.addEventListener('click', () => {
     firebase.auth()
       .signInWithPopup(provider2)
-      .then(function (result) {
+      .then((result) => {
         console.log(result);
         console.log(result.user);
         /* probar poniendo foto de logueado */
