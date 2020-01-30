@@ -1,122 +1,91 @@
-# Finger Food
+# FINGER FOOD 🍔
+
 
 ## Índice
 
-* [1. Preámbulo](#1-preámbulo)
-* [2. Definición de usuario](#2-definicion-de-usuario)
-* [3. Definición UX](#3-definicion-de-ux)
-* [4. Desarrollo de Interfaz UI](#4-desarrollo-de-interfaz-ui)
-* [5. Mejoras](#5-mejoras)
-* [6. Conclusiones](#6-conclusiones)
+* Descripción del proyecto.-
+* Definición del producto.-
+* Encuestas.-
+* Historias de usuario.-
+* Planificación.-
+* Diseños.-
+* Mejoras.-
 
 ***
 
-## 1. Preámbulo
+## 1. Descripción del Proyecto
 
-Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, etc. Las redes
-sociales han invadido nuestras vidas. Las amamos u odiamos, y muchos no podemos
-vivir sin ellas.
+Finger Food (picadas) es una Red Social creada principalmente para personas que disfrutan de la comida, que les gusta salir a conocer nuevos lugares, diferentes tipos de comida, etc. 🍕
 
-Hay redes sociales de todo tipo y para todo tipo de intereses. Por ejemplo,
-en una ronda de financiamiento con inversionistas, se presentó una red social
-para químicos en la que los usuarios podían publicar artículos sobre sus
-investigaciones, comentar en los artículos de sus colegas, y filtrar artículos
-de acuerdo a determinadas etiquetas o su popularidad, lo más reciente, o lo
-más comentado.
-
-## 2. Definición de usuario
-
-En este proyecto construirás una Red Social sobre lo que decidan tú y tu equipo.
-Podría ser, por ejemplo, sobre alimentación saludable, feminismo, educación,
-salud, energías renovables, amantes de las [Empanadas](https://es.wikipedia.org/wiki/Empanada)
-o de los [Tacos de Canasta](https://es.wikipedia.org/wiki/Taco), de la
-[Feijoada](https://es.wikipedia.org/wiki/Feijoada), o de lo que sea.
-
-Tu Red Social tendrá que permitir a cualquier usuario crear una cuenta de
-acceso y loguearse con ella; crear, editar, borrar y _"likear"_ publicacciones.
-
-### Encuesta
-
-### Historias de usuarios
-
-## 3. Definición UX
-
-El objetivo principal de aprendizaje de este proyecto es construir una
-[Single-page Application (SPA)](https://es.wikipedia.org/wiki/Single-page_application)
-[_responsive_](https://github.com/Laboratoria/curricula-js/tree/master/topics/css/02-responsive)
- (con más de una vista / página) en la que podamos **leer y escribir datos.**
-
-### Sketch
-
-* [ ] [HTML semántico](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantics_in_HTML)
-* [ ] [CSS `flexbox`](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-* [ ] Construir tu aplicación respetando el diseño realizado (maquetación).
-
-### Planificación
-
-* [ ] [Manipulación dinámica del DOM](https://developer.mozilla.org/es/docs/Referencia_DOM_de_Gecko/Introducci%C3%B3n)
-* [ ] [History API](https://developer.mozilla.org/es/docs/DOM/Manipulando_el_historial_del_navegador)
-* [ ] [`localStorage`]
-
-### Decisiones de diseño
-
-* [ ] [Uso de callbacks](https://developer.mozilla.org/es/docs/Glossary/Callback_function)
-* [ ] [Consumo de Promesas](https://scotch.io/tutorials/javascript-promises-for-dummies#toc-consuming-promises)
-* [ ] Uso ES modules
-([`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-| [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export))
-
-### Prototipo de alta fidelidad
-
-* [ ] [Firestore](https://firebase.google.com/docs/firestore)
-* [ ] [Firebase Auth](https://firebase.google.com/docs/auth/web/start)
-* [ ] [Firebase security rules](https://firebase.google.com/docs/rules)
-* [ ] [Uso de onSnapshot](https://firebase.google.com/docs/firestore/query-data/listen)
-| [onAuthStateChanged](https://firebase.google.com/docs/auth/web/start#set_an_authentication_state_observer_and_get_user_data)
+![ Pantalla Principal](/src/img/pantalla_inicio.png)
 
 ***
 
-## 4. Desarrollo de Interfaz UI
+## 2. Definición del producto
 
-* Este proyecto se debe trabajar en equipos de tres.
+Como squad elegimos una Red Social de comida en la que el usuario primero pudiese crear una una cuenta, para crear su registro de le da la opción de poder ingresar con google, con facebook o solo ingresando un mail y una contraseña valida, cuando el usuario ya esta registrado automaticamente se despliega la vista del muro, que es donde aparecen las publicaciones de otros usuarios, este tiene la opción de subir una publicación o solamente ver los post de otros usuarios. 💬
 
-* La lógica del proyecto debe estar implementada completamente en JavaScript
-  (ES6+), HTML y CSS :smiley:. Para este proyecto **no está permitido** utilizar
-  _frameworks_ o librerías de CSS y JS.
+ACA DEBE APARECER UNA IMAGEN DE TODAS LAS VISTAS
+MURO Y POST
 
-* La división y organización del trabajo debe permitir, sin excepciones, que
-  **cada integrante** del equipo practique el aprendizaje de todo lo involucrado
-  en **cada historia**. _No se dividan el trabajo como en una fábrica._
-  - ¿Hasta acá has avanzado en tus proyectos con cierta fluidez y sin mayores
-    problemas? Sé generosa con tus compañeras, permíteles aprender y practicar
-    sin restricciones, aunque tome un poco más de tiempo. Aproveha de
-    _coachearlas_, de hacer _pair programming_, una de las mejores maneras de
-    aprender es explicando verbalmente.
+***
 
-  - ¿Se te está haciendo difícil y te cuesta un poco más avanzar? No te quedes
-    con las partes "fáciles" del proyecto, conversa, negocia, exige tu oportunidad
-    para practicar y aprender lo que se te hace más difícil.
+## 3. Encuesta a usuarios
 
-* Solamente pueden trabajar en una única historia por vez, no pueden avanzar a
-  la siguiente sin haber completado la anterior. La historia se completa cuando
-  se cumplen **todos** sus Criterios de Aceptación + **toda** su Definición
-  de Terminado.
+Para tener un poco mas clara la necesidad de nuestros usuarios decidimos realizar una encuesta con un formulario de Google 
 
-Para comenzar tendrás que hacer un _fork_ y _clonar_ este repositorio.
+![ Encuesta](/src/img/encuesta.jpg)
 
-## 5. Mejoras
+***
+
+## 4. Historias de usuarios
+
+Las historias de usuario están basadas en las necesidades que tiene el usuario al momento de utilizar la app. 
 
 
-## 6. Conclusiones
+### Historia de usuario n°1
 
-Las secciones llamadas _Hacker Edition_ son **opcionales**. Si **terminaste**
-con todo lo anterior y te queda tiempo, intenta completarlas. Así podrás
-profundizar y/o ejercitar más sobre los objetivos de aprendizaje del proyecto.
+    YO: como visitante de distintos lugares de comida y usuario activo de redes sociales.
+    QUIERO: registrarme en una app.
+    PARA: poder conocer otros lugares a los cuales visitar.
 
-* Permite crear posts con imágenes.
-* Permite buscar usuarios, agregar y eliminar "amigos".
-* Permite definir la privacidad de los _posts_ (público o solamente para amigos).
-* Permite ver su muro de cualquier usuario "no-amigo" (solamente los
-  posts _públicos_).
-* Permite comentar o responder una publicación.
-* Permite editar perfil.
+### Historia de usuario n°2
+
+    YO: como amante de la comida.
+    QUIERO: una app. que me permita poder crear un post con mi experiencia.
+    PARA: que otros usuarios vayan a conocerlos.
+   
+***
+
+## 5. Planificación
+
+Para poder planificarnos y así cumplir con los plazos utilizamos Trello 
+
+[Link de planificación en Trello 👈](https://trello.com/b/8OXvUyK2/red-social)
+
+***
+
+## 6. Diseños
+
+Sketch
+
+![ Sketch](/src/img/sketch.jpg)
+
+*** 
+Prototipo 
+
+![ Prototipo](/src/img/prototipo.png)
+
+***
+
+## 7. Mejoras
+
+Si bien tuvimos un prototipo de alta fidelidad desde el comienzo, fue para poder iterando con nuestros usuarios, para tener una idea de que es lo que queriamos mas o menos. 
+
+IMAGEN DE APP LISTA
+IMAGEN DE APP LISTA
+IMAGEN DE APP LISTA
+
+
+
+

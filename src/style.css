@@ -93,7 +93,7 @@ body {
 
 hr {
   display: inline-block;
-  width: 45%;
+  width: 45%;  
 }
 
 .btn__rrss {
@@ -129,7 +129,7 @@ hr {
   font-size: 17px;
 }
 
-.login__linkRecover:hover {
+.login__linkRecover:hover, .register__linkRecover:hover {
   color: #E58E00;
 }
 
@@ -139,7 +139,7 @@ hr {
   font-size: 17px;
 }
 
-.login__linkRegister:hover {
+.login__linkRegister:hover, .register__linkRegister:hover {
   color: #aaa;
 }
 

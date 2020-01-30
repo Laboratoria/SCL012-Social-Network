@@ -2,6 +2,14 @@
   "rules": {
     ".read": false,
     ".write": false
+<<<<<<< HEAD
+    
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+    }
+}
+=======
   },
   "database": {
     "rules": "database.rules.json"
@@ -10,3 +18,4 @@
     "rules": "storage.rules"
   }
 }
+>>>>>>> 270e24eb9822908b7d9d09f20e2ec1ad33679eeb
