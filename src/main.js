@@ -56,7 +56,7 @@ function init() {
     <div class="navigation">
       <ul class="navigation__list">
         <li class="navigation__item"><a href="#divSearch"><i class="fas fa-search icon"></i></a></li>
-        <li class="navigation__item"><a href="#"><i class="fas fa-plus icon"></i></a></li>
+        <li class="navigation__item"><a href="#" id="createPost"><i class="fas fa-plus icon"></i></a></li>
         <li class="navigation__item"><a href="#"><i class="fas fa-user-circle fa-2x icon"></i></a></li>
         <li class="navEmail"> ${email} </li>
         <li class="navigation__item icon"><a id="closeSession" href="#"><i class="far fa-times-circle fa-2x icon"></i></a></li>
@@ -85,6 +85,18 @@ function init() {
   <footer id="contact" class="contact">
     <p> Finger Food 2020. Todos los derechos reservados.</p>
   </footer>`;
+// funcionalidad boton + (crear post)
+  const createPost = document.querySelector('#createPost');
+      createPost.addEventListener('click', () => {
+      const postDiv = document.querySelector('#wrap');
+      postDiv.innerHTML = `<section class="postPage" id="postPage">
+      <div id="addPost">
+        <textarea name="message" id="message" class="message"></textarea>
+        <button name="submit" id="submit" class="submit">Publicar</button>
+      </div>
+    </section>
+    `
+    });
 
     /* Cerrar sesión */
     const closeSession = document.getElementById('closeSession');

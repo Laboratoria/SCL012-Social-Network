@@ -264,3 +264,12 @@ hr {
     width: 60%;
   }
 }
+.addPost {
+  display: flex;
+  width: 80%;
+  padding: 1%;
+  background-color: #ffffff;
+}
+.message {
+  width: 60%;
+}
