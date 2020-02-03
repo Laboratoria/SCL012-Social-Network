@@ -34,8 +34,8 @@ export const verificationEmail = () => {
 };
 
 /* Registro nuevo usuario */
-export const signInNew = (name, email, password) => {
 
+export const signInNew = (name, email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
       result.user.updateProfile({
@@ -66,8 +66,6 @@ export const signInNew = (name, email, password) => {
       // [END_EXCLUDE]
     });
 };
-
-
 /* Cerrar sesión */
 export const signOff = () => {
   firebase.auth().signOut()

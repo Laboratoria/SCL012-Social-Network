@@ -90,15 +90,67 @@ function init() {
   </nav>
 
   <section class="main">
+
    <h1 class="welcome" id="welcome">Bienvenid@ <span> ${displayName} </span> </h1>
   </section>`;
 
     contact.innerHTML = `
      <p> Finger Food 2020. Todos los derechos reservados.</p>`;
-
-    /* Cerrar sesión */
+    
+  <footer id="contact" class="contact">
+    <p> Finger Food 2020. Todos los derechos reservados.</p>
+  </footer>`;
+    // funcionalidad boton + (crear post)
+    const createPost = document.querySelector('#createPost');
+    createPost.addEventListener('click', () => {
+      const viewPost = document.querySelector('#wrap');
+      viewPost.innerHTML = `<section class="postPage" id="postPage">
+      <div id="addPost">
+        <input type="text" name="message" id="message" class="message" placeholder="Recomienda lugar"></input>
+        <button name="upload" id="upload" class="upload">Carga imagen</button>
+        <button name="submit" id="submit" class="submit">Publicar</button>
+      </div>
+      </section>
+    `
+    let submitPost = document.querySelector('#submit');
+    submitPost.addEventListener('click', () => {
+     // const emailIngreso = document.getElementById('login__email').value;
+      let publicPost = document.querySelector('#wrap');
+      const message = document.querySelector('#message').value;
+      let database = firebase.firestore();
+      database.collection("posts").add({
+        author: displayName,
+        message: message,
+      })
+      .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        console.log(displayName);
+        console.log(message);
+        // document.getElementById('message') = '';
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+      let printAuthor = displayName;
+      const printMessage = document.querySelector('#message').value;
+      publicPost.innerHTML = `<div id="divPost" class="divPost">
+      <a href="#" id="editPost" class="editPost"><i class="fas fa-pencil-alt"></i></a>
+      <p>${printAuthor}</p>
+      <input type="text" id="printMsg" class="printMsg" value="${printMessage}"></input>
+      </div>
+      `;
+     });
+     let database = firebase.firestore();
+     database.collection("posts").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data()}`);
+      });
+  });
+    
+    });
+    
+/* Cerrar sesión */
     const closeSession = document.getElementById('closeSession');
-
     closeSession.addEventListener('click', () => {
       /* cerrar sesión de usuario */
       signOff();
@@ -107,109 +159,7 @@ function init() {
       start();
       window.location.reload();
     });
-
-
-    /* Adicionar post */
-    const plus = document.querySelector('#plus');
-    const viewPost = document.getElementById('viewPost');
-    const welcome = document.getElementById('welcome');
-
-    plus.addEventListener('click', () => {
-      /* Cambiar título */
-      welcome.innerHTML = 'Nuevo Post';
-      /* Mostrar post */
-      viewPost.innerHTML = `
-      <div class="containerPost">
-        <label for="fileUpload" class="uploadImg"  title="Formato png/jpg">
-         <i class="fas fa-cloud-upload-alt"></i> Subir imagen
-        </label>
-        <input id="fileUpload" accept=".png, .jpg" type="file" style='display: none;'/ required>
-        <div id="infoFile" class="infoFile"></div>
-        <textarea class="inputArea" placeholder="Ingrese comentario" id="commentary" maxlength="1000"></textarea>
-        <button class="btnOk" id="btnOk"> Postear </button>
-      </div>`;
-
-      const fileUpload = document.getElementById('fileUpload');
-      let file;
-      const commentary = document.getElementById('commentary');
-      const btnOk = document.getElementById('btnOk');
-
-      fileUpload.addEventListener('change', changeImg);
-      btnOk.addEventListener('click', uploadImg);
-
-      /* Cambiar estética input */
-      function changeImg() {
-        file = fileUpload.files[0];
-        console.log(file);
-        const fileEntered = document.getElementById('fileUpload').files[0].name;
-        /* nombre archivo */
-        document.getElementById('infoFile').innerHTML = fileEntered;
-      }
-
-      function uploadImg() {
-        if (fileUpload.value === '' || commentary.value === '') {
-          alert('Complete los campos');
-        } else {
-          /* id único archivo - aleatorio */
-          const id = Math.random().toString(36).substring(2);
-          /* Ruta: Creación/ubicación de carpeta y nombre de archivo con el que se guardará */
-          const filePath = `upload/food_${id}`;
-          /* Referencia en storage a ruta */
-          const storageRef = storage.ref(filePath);
-          /* Subida de fichero con ruta y datos archivo */
-          /* const task = this.storage.upload(filePath, file); */
-          const uploadTask = storageRef.put(file);
-          /* Recuperar URL para guardar en base de datos */
-
-          // Register three observers:
-          // 1. 'state_changed' observer, called any time the state changes
-          // 2. Error observer, called on failure
-          // 3. Completion observer, called on successful completion
-          uploadTask.on('state_changed', function (snapshot) {
-            // Observe state change events such as progress, pause, and resume
-            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log('Upload is ' + progress + '% done');
-            switch (snapshot.state) {
-              case firebase.storage.TaskState.PAUSED: // or 'paused'
-                console.log('Upload is paused');
-                break;
-              case firebase.storage.TaskState.RUNNING: // or 'running'
-                console.log('Upload is running');
-                break;
-            }
-          }, function (error) {
-            // Handle unsuccessful uploads
-          }, function () {
-            // Handle successful uploads on complete
-            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-              console.log('Archivo disponible en ', downloadURL);
-
-              /* Guardar en base de datos nuevo post con imagen y comentario */
-              db.collection('newPost').add({
-                  image: downloadURL,
-                  commentary: commentary.value,
-                })
-                .then(function (docRef) {
-                  console.log("Document written with ID: ", docRef.id);
-                })
-                .catch(function (error) {
-                  console.error("Error adding document: ", error);
-                })
-
-              /* Publicar */
-            });
-          });
-        }
-
-      }
-
-
-    });
-  }
-
-
+     
   /* Ingreso usuario existente */
   const emailInput = document.getElementById('login__email');
   console.log(emailInput);
@@ -332,6 +282,7 @@ function init() {
     registerBtn.addEventListener('click', () => {
       /* Verificar que no existe usuario */
       /* Guardar */
+
       signInNew(userName.value, emailRegister.value, passRegister.value);
       /* Guardar datos registro */
 

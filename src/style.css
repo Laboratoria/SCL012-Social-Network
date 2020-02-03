@@ -319,3 +319,41 @@ footer {
   color: white;
   opacity: .5;
 }
+
+.message {
+  width: 60%;
+}
+/* Posts style */
+.postPage, .divPost {
+  display: block;
+  width: 40%;
+  background-color: #ffffff;
+  color: black;
+  padding: 1%;
+}
+.editPost {
+  display: block;
+  float: right;
+}
+.message, .printMsg {
+  border: none;
+  outline: none;
+  margin: 2% 0%;
+}
+.submit, .upload {
+  display: inline-block;
+  border: none;
+  width: 20%;
+  color: black;
+  font-size: 13px;
+  background: #aaa;
+  padding: 0.3125rem;
+  cursor: pointer;
+  margin: 1%;
+  border-radius: 0.312rem;
+}
+.submit:hover, .upload:hover {
+  background: #E58E00;
+  transition: background .5s;
+}
+
