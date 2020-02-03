@@ -3,14 +3,23 @@ import {
   signInNew,
   signIn,
   signOff,
+  recoverPass,
 } from './lib/index.js';
 
+// Get a reference to the storage service, which is used to create references in your storage bucket
+const storage = firebase.storage();
+
+// Initialize Firestore
+const db = firebase.firestore();
 /*---------------------------------------------------------------------------------*/
 
 function init() {
   const root = document.getElementById('root');
+  const contact = document.getElementById('contact');
+
   /* Formulario login */
   function start() {
+    window.location.hash = '/login';
     root.innerHTML = `
     <section class="login" id="login">
       <img src="img/logo2.png" alt="logo Finger Food" class="login__logo">
@@ -49,14 +58,30 @@ function init() {
 
   start();
 
+  /* Restablecer contraseña */
+
+  const recover = document.getElementById('login__recover');
+  const loginEmail = document.getElementById('login__email');
+
+  recover.addEventListener('click', () => {
+    if (loginEmail.value === '') {
+      alert('Ingrese su email');
+    } else {
+      recoverPass(loginEmail.value);
+      loginEmail.value = '';
+    }
+  });
+
+  /* Ingreso a home */
   function newPage(displayName, email) {
+    window.location.hash = '/home';
     root.innerHTML = `
     <nav class="navi">
     <img src="img/logo2.png" alt="logo" class="logoNav">
     <div class="navigation">
       <ul class="navigation__list">
         <li class="navigation__item"><a href="#divSearch"><i class="fas fa-search icon"></i></a></li>
-        <li class="navigation__item"><a href="#" id="createPost"><i class="fas fa-plus icon"></i></a></li>
+        <li class="navigation__item"><a href="#" id="plus"><i class="fas fa-plus icon"></i></a></li>
         <li class="navigation__item"><a href="#"><i class="fas fa-user-circle fa-2x icon"></i></a></li>
         <li class="navEmail"> ${email} </li>
         <li class="navigation__item icon"><a id="closeSession" href="#"><i class="far fa-times-circle fa-2x icon"></i></a></li>
@@ -65,23 +90,13 @@ function init() {
   </nav>
 
   <section class="main">
-    <h1 class="welcome">Bienvenid@ <span> ${displayName} </span> </h1>
-    <div class="typeSelect">
-      <select id="typeFood" class="typeFood">
-        <option value="all">Tipos de comida</option>
-        <option value="rapida">Comida Rápida</option>
-        <option value="saludable">Comida Saludable</option>
-        <option value="China">Comida China</option>
-        <option value="mexicana">Comida Mexicana</option>
-        <option value="peruana">Comida Peruana</option>
-      </select>
-    </div>
-    <div class="inputSearch" id="divSearch">
-       <i class="fas fa-search icon"></i>
-       <input type="text" class="inputText" id="inputSearch" placeholder="Buscar">
-     </div>
-  </section>
-    <div id="wrap" class="wrap"></div>
+
+   <h1 class="welcome" id="welcome">Bienvenid@ <span> ${displayName} </span> </h1>
+  </section>`;
+
+    contact.innerHTML = `
+     <p> Finger Food 2020. Todos los derechos reservados.</p>`;
+    
   <footer id="contact" class="contact">
     <p> Finger Food 2020. Todos los derechos reservados.</p>
   </footer>`;
@@ -139,22 +154,50 @@ function init() {
     closeSession.addEventListener('click', () => {
       /* cerrar sesión de usuario */
       signOff();
+      /* Chequear rememberMe - recargar pagina */
       /* Pasar a página inicial */
       start();
+      window.location.reload();
     });
-  }
      
   /* Ingreso usuario existente */
-  const emailIngreso = document.getElementById('login__email');
-  console.log(emailIngreso);
-  const passIngreso = document.getElementById('login__pass');
-  console.log(passIngreso);
+  const emailInput = document.getElementById('login__email');
+  console.log(emailInput);
+  const passInput = document.getElementById('login__pass');
+  console.log(passInput);
   const loginBtn = document.getElementById('login__accept');
   console.log(loginBtn);
 
+  /* Guardar usuario y contraseña si chequea login__remember y apreta botón */
+  const rememberMe = document.getElementById('login__remember');
+
+  if (localStorage.checkbox && localStorage.checkbox !== '') {
+    rememberMe.setAttribute('checked', 'checked');
+    emailInput.value = localStorage.username;
+    passInput.value = localStorage.pass;
+  } else {
+    rememberMe.removeAttribute('checked');
+    emailInput.value = '';
+    passInput.value = '';
+  }
+
+  function remember() {
+    if (rememberMe.checked && emailInput.value !== '') {
+      localStorage.username = emailInput.value;
+      localStorage.pass = passInput.value;
+      localStorage.checkbox = rememberMe.value;
+    } else {
+      localStorage.username = '';
+      localStorage.pass = '';
+      localStorage.checkbox = '';
+    }
+  }
+
   loginBtn.addEventListener('click', () => {
+    /* Guardar usuario y pass si chequeó recuérdame */
+    remember();
     /* Verificar que existe usuario */
-    signIn(emailIngreso.value, passIngreso.value);
+    signIn(emailInput.value, passInput.value);
     /* Pasar a página de post */
   });
 
@@ -175,18 +218,17 @@ function init() {
         console.log(isAnonymous);
         let uid = user.uid;
         console.log(uid);
-        let providerData = user.providerData;
+        const providerData = user.providerData[0];
         console.log(providerData);
-        if (emailVerified) {
+        if (emailVerified || providerData.providerId === 'facebook.com') {
           if (displayName === null) {
             displayName = '';
           }
           newPage(displayName, email);
-        } else if (!emailVerified) {
+        } else {
           signOff();
           start();
         }
-
       } else {
         // User is signed out;
         console.log('no existe usuario activo');
@@ -200,12 +242,17 @@ function init() {
   const loginRegister = document.getElementById('login__btnRegister');
   loginRegister.addEventListener('click', () => {
     /* Formulario registro */
+    window.location.hash = '/register';
     root.innerHTML = `
     <section class="register" id="register">
       <img src="img/logo2.png" alt="logo Finger Food" class="register__logo">
       <h1 class="register__title">Regístrate!</h1>
       <form class="register__form">
         <div class="register__container">
+          <div class="register__inputName">
+            <i class="fas fa-user icon"></i>
+            <input type="text" class="register__inputText" id="register__name" placeholder="Nombre y apellido">
+          </div>
           <div class="register__inputMail">
             <i class="fas fa-envelope icon"></i>
             <input type="email" class="register__inputText" id="register__email" placeholder="Correo Electrónico">
@@ -220,30 +267,40 @@ function init() {
       </form>
     </section>
     `;
-  
+
     /* Guardar nuevo usuario */
-    const emailRegistro = document.getElementById('register__email');
-    console.log(emailRegistro);
-    const passRegistro = document.getElementById('register__pass');
-    console.log(passRegistro);
+    /* const userName = document.getElementById('register__name').value; */
+    const userName = document.getElementById('register__name');
+    console.log(userName);
+    const emailRegister = document.getElementById('register__email');
+    console.log(emailRegister);
+    const passRegister = document.getElementById('register__pass');
+    console.log(passRegister);
     const registerBtn = document.getElementById('register__btn');
     console.log(registerBtn);
 
     registerBtn.addEventListener('click', () => {
       /* Verificar que no existe usuario */
       /* Guardar */
-      signInNew(emailRegistro.value, passRegistro.value);
-      let database = firebase.firestore();
-      database.collection("users").add({
-        userEmail: emailRegistro.value,
-      })
-      .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function(error) {
-        console.error("Error adding document: ", error);
-      });
-      /* Pasar a página de post */
+
+      signInNew(userName.value, emailRegister.value, passRegister.value);
+      /* Guardar datos registro */
+
+      /* function save(name, email) {
+         db.collection('users').add({
+             userName: name,
+             userEmail: email,
+           })
+           .then(function (docRef) {
+             console.log("Document written with ID: ", docRef.id);
+           })
+           .catch(function (error) {
+               console.error("Error adding document: ", error);
+           })
+       };
+       /* Guardar si se envia mail de verificación */
+      /* save(userName.value, emailRegister.value);*/
+      start();
     });
   });
 
@@ -281,6 +338,20 @@ function init() {
         /* guardar datos de usuario */
       });
   });
+
+  /* Creación routing
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#/login') {
+    //function
+  } else if (window.location.hash === '#/register') {
+    //function
+  } else if (window.location.hash === '#/home') {
+    const userNow = firebase.auth().currentUser;
+    //function(userNow)
+  } else if (window.location.hash === '#/forgot') {
+    //function
+  }
+});*/
 }
 window.onload = init();
 

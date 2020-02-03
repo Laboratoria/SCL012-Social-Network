@@ -51,7 +51,7 @@ body {
   text-align: right;
 }
 
-.login__inputMail, .login__inputPassword, .login__inputName, .register__inputMail, .register__inputPassword, .register__inputName {
+.login__inputMail, .login__inputPassword, .register__inputName, .register__inputMail, .register__inputPassword, .register__inputName {
   margin-bottom: 0.9375rem;
   border: 1px solid #fff;
 }
@@ -243,7 +243,7 @@ hr {
 }
 
 /* Tarjetas */
-.wrap {
+#viewPost {
   margin: 50px auto 20px;
   display: flex;
   justify-content: center;
@@ -264,12 +264,62 @@ hr {
     width: 60%;
   }
 }
-.addPost {
-  display: flex;
-  width: 80%;
-  padding: 1%;
-  background-color: #ffffff;
+
+.containerPost {
+  width: 350px;
+  padding: 1rem;
+  text-align: center;
+  margin: 1rem;
 }
+
+/* Evita desbordamiento del texto en div */
+.infoFile {
+  word-wrap: break-word;
+}
+
+.uploadImg {
+  padding: 5px 10px;
+  background: #E58E00;
+  color:#fff;
+  border:0px solid #fff;
+}
+
+.uploadImg:hover{
+  color:#fff;
+  background: #aaa;
+}
+
+ .btnOk {
+  background-color: #aaa;
+  display: block;
+  margin: 1rem auto;
+  height: 2rem;
+  padding: 0 1rem;
+  line-height: 30px;
+}
+
+.infoFile {
+  padding: 1rem;
+}
+
+.inputArea {
+  display: block;
+  margin: 1rem auto;
+  width: 16rem;
+  height: 6rem;
+  background-color: #fff;
+  opacity: .5;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+  opacity: .5;
+}
+
 .message {
   width: 60%;
 }
@@ -306,3 +356,4 @@ hr {
   background: #E58E00;
   transition: background .5s;
 }
+
