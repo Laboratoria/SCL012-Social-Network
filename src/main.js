@@ -18,7 +18,7 @@ function init() {
 
   /* Formulario login */
   function start() {
-    window.location.hash = '';
+    window.location.hash = '/login';
     root.innerHTML = `
     <section class="login" id="login">
       <img src="img/logo2.png" alt="logo Finger Food" class="login__logo">
@@ -58,7 +58,7 @@ function init() {
   start();
 
   function newPage(displayName, email) {
-    window.location.hash = '/wall';
+    window.location.hash = '/home';
     root.innerHTML = `
     <nav class="navi">
     <img src="img/logo2.png" alt="logo" class="logoNav">
@@ -74,11 +74,11 @@ function init() {
   </nav>
 
   <section class="main">
-   <h1 class="welcome">Bienvenid@ <span> ${displayName} </span> </h1>     
+   <h1 class="welcome" id="welcome">Bienvenid@ <span> ${displayName} </span> </h1>
   </section>`;
 
     contact.innerHTML = `
-     <footer> Finger Food 2020. Todos los derechos reservados.</footer>`;
+     <p> Finger Food 2020. Todos los derechos reservados.</p>`;
 
     /* Cerrar sesión */
     const closeSession = document.getElementById('closeSession');
@@ -92,8 +92,11 @@ function init() {
 
     const plus = document.querySelector('#plus');
     const viewPost = document.getElementById('viewPost');
+    const welcome = document.getElementById('welcome');
 
     plus.addEventListener('click', () => {
+      /* Cambiar título */
+      welcome.innerHTML = 'Nuevo Post';
       /* Mostrar post */
       viewPost.innerHTML = `
       <div class="containerPost">
@@ -108,7 +111,6 @@ function init() {
 
       const fileUpload = document.getElementById('fileUpload');
       let file;
-      let imageUpload;
       const commentary = document.getElementById('commentary');
       const btnOk = document.getElementById('btnOk');
 
@@ -176,10 +178,9 @@ function init() {
                   console.error("Error adding document: ", error);
                 })
 
-              /* Publicar */  
+              /* Publicar */
             });
           });
-
         }
 
       }
@@ -270,7 +271,7 @@ function init() {
       </form>
     </section>
     `;
-  
+
     /* Guardar nuevo usuario */
     /* const userName = document.getElementById('register__name').value; */
     const userName = document.getElementById('register__name');
@@ -340,6 +341,20 @@ function init() {
         /* guardar datos de usuario */
       });
   });
+
+  /* Creación routing
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#/login') {
+    //function
+  } else if (window.location.hash === '#/register') {
+    //function
+  } else if (window.location.hash === '#/home') {
+    const userNow = firebase.auth().currentUser;
+    //function(userNow)
+  } else if (window.location.hash === '#/forgot') {
+    //function
+  }
+});*/
 }
 window.onload = init();
 

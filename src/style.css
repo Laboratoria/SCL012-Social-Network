@@ -272,6 +272,11 @@ hr {
   margin: 1rem;
 }
 
+/* Evita desbordamiento del texto en div */
+.infoFile {
+  word-wrap: break-word;
+}
+
 .uploadImg {
   padding: 5px 10px;
   background: #E58E00;
@@ -284,12 +289,13 @@ hr {
   background: #aaa;
 }
 
-.inputImg, .btnOk {
+ .btnOk {
+  background-color: #aaa;
   display: block;
   margin: 1rem auto;
   height: 2rem;
-  padding: 1rem;
-  align-items: center;
+  padding: 0 1rem;
+  line-height: 30px;
 }
 
 .infoFile {
