@@ -99,8 +99,7 @@ function init() {
       viewPost.innerHTML = `<section class="postPage" id="postPage">
       <div id="addPost">
         <input type="text" name="message" id="message" class="message" placeholder="Recomienda lugar"></input>
-        <button id="btnLike" id="btnLike" class="btnLike" > </button>
-        <p class= btnLike> <span id="mostrar"> </span> Me gusta </p>
+        
         <label for="fileUpload" class="uploadImg"  title="Formato png/jpg">
         <i class="fas fa-cloud-upload-alt"></i> Subir imagen
         </label>
@@ -121,14 +120,7 @@ function init() {
     /* nombre archivo */
     document.getElementById('infoFile').innerHTML = fileEntered;
     }
-    window.onload = function () {
-      let contador = 0;
-        document.getElementById("btnLike").onclick = function() {
-        contador = contador++
-        document.getElementById("mostrar").innerHTML;
-        }
-    };
-
+    
     let submitPost = document.querySelector('#submit');
     submitPost.addEventListener('click', () => {
      // const emailIngreso = document.getElementById('login__email').value;
@@ -213,8 +205,17 @@ function init() {
       <a href="#" id="editPost" class="editPost"><i class="fas fa-pencil-alt"></i></a>
       <p>${printAuthor}</p>
       <input type="text" id="printMsg" class="printMsg" value="${printMessage}"></input>
+      <button id="btnLike" id="btnLike" class="btnLike" > </button>
+      <p class= btnLike> <span id="mostrar"> </span> Me gusta </p>
       </div>
       `;
+      window.onload = function () {
+        let contador = 0;
+          document.getElementById("btnLike").onclick = function() {
+          contador = contador++
+          document.getElementById("mostrar").innerHTML;
+          }
+      };
      });
      // let database = firebase.firestore();
      db.collection("posts").get().then((querySnapshot) => {
