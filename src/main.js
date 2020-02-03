@@ -72,6 +72,7 @@ function init() {
     }
   });
 
+  /* Ingreso a home */
   function newPage(displayName, email) {
     window.location.hash = '/home';
     root.innerHTML = `
@@ -101,10 +102,13 @@ function init() {
     closeSession.addEventListener('click', () => {
       /* cerrar sesión de usuario */
       signOff();
+      /* Chequear rememberMe */
       /* Pasar a página inicial */
       start();
     });
 
+
+    /* Adicionar post */
     const plus = document.querySelector('#plus');
     const viewPost = document.getElementById('viewPost');
     const welcome = document.getElementById('welcome');
@@ -206,16 +210,43 @@ function init() {
 
 
   /* Ingreso usuario existente */
-  const emailIngreso = document.getElementById('login__email');
-  console.log(emailIngreso);
-  const passIngreso = document.getElementById('login__pass');
-  console.log(passIngreso);
+  const emailInput = document.getElementById('login__email');
+  console.log(emailInput);
+  const passInput = document.getElementById('login__pass');
+  console.log(passInput);
   const loginBtn = document.getElementById('login__accept');
   console.log(loginBtn);
 
+  /* Guardar usuario y contraseña si chequea login__remember y apreta botón */
+  const rememberMe = document.getElementById('login__remember');
+
+  if (localStorage.checkbox && localStorage.checkbox !== '') {
+    rememberMe.setAttribute('checked', 'checked');
+    emailInput.value = localStorage.username;
+    passInput.value = localStorage.pass;
+  } else {
+    rememberMe.removeAttribute('checked');
+    emailInput.value = '';
+    passInput.value = '';
+  }
+
+  function remember() {
+    if (rememberMe.checked && emailInput.value !== '') {
+      localStorage.username = emailInput.value;
+      localStorage.pass = passInput.value;
+      localStorage.checkbox = rememberMe.value;
+    } else {
+      localStorage.username = '';
+      localStorage.pass = '';
+      localStorage.checkbox = '';
+    }
+  }
+
   loginBtn.addEventListener('click', () => {
+    /* Guardar usuario y pass si chequeó recuérdame */
+    remember();
     /* Verificar que existe usuario */
-    signIn(emailIngreso.value, passIngreso.value);
+    signIn(emailInput.value, passInput.value);
     /* Pasar a página de post */
   });
 
