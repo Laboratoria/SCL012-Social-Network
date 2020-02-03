@@ -175,6 +175,8 @@ function init() {
                 .catch(function (error) {
                   console.error("Error adding document: ", error);
                 })
+
+              /* Publicar */  
             });
           });
 
@@ -202,7 +204,7 @@ function init() {
   });
 
   function observador() {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         console.log('Existe usuario activo');
         // User is signed in.
@@ -241,7 +243,6 @@ function init() {
 
   /* Pasar de login a registro si presionan botón Registrar */
   const loginRegister = document.getElementById('login__btnRegister');
-
   loginRegister.addEventListener('click', () => {
     /* Formulario registro */
     window.location.hash = '/register';
@@ -269,6 +270,7 @@ function init() {
       </form>
     </section>
     `;
+  
     /* Guardar nuevo usuario */
     /* const userName = document.getElementById('register__name').value; */
     const userName = document.getElementById('register__name');
@@ -312,7 +314,7 @@ function init() {
   btnGoogle.addEventListener('click', () => {
     firebase.auth()
       .signInWithPopup(provider)
-      .then(function (result) {
+      .then((result) => {
         console.log(result.user);
         /* probar poniendo foto de logueado */
         /* pasar a sección post */
@@ -329,7 +331,7 @@ function init() {
   btnFacebook.addEventListener('click', () => {
     firebase.auth()
       .signInWithPopup(provider2)
-      .then(function (result) {
+      .then((result) => {
         console.log(result);
         console.log(result.user);
         /* probar poniendo foto de logueado */
@@ -339,7 +341,6 @@ function init() {
       });
   });
 }
-
 window.onload = init();
 
 /*---------------------------------------------------------------------------------*/

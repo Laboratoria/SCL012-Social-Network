@@ -15,7 +15,6 @@ export const signIn = (email, password) => {
       const errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
-      // ...
     });
 };
 
@@ -67,6 +66,7 @@ export const signInNew = (name, email, password) => {
       // [END_EXCLUDE]
     });
 };
+
 
 /* Cerrar sesión */
 export const signOff = () => {

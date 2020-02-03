@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [debug] [2020-01-31T00:22:39.216Z] ----------------------------------------------------------------------
 [debug] [2020-01-31T00:22:39.219Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Salomon\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
 [debug] [2020-01-31T00:22:39.219Z] CLI Version:   7.12.1
@@ -78,3 +79,34 @@ Before we get started, keep in mind:
     at process._tickCallback (internal/process/next_tick.js:68:7)
 [error] 
 [error] Error: An unexpected error has occurred.
+=======
+[debug] [2020-01-30T12:27:24.632Z] ----------------------------------------------------------------------
+[debug] [2020-01-30T12:27:24.634Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Monica\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2020-01-30T12:27:24.634Z] CLI Version:   7.12.1
+[debug] [2020-01-30T12:27:24.634Z] Platform:      win32
+[debug] [2020-01-30T12:27:24.635Z] Node Version:  v10.16.3
+[debug] [2020-01-30T12:27:24.635Z] Time:          Thu Jan 30 2020 09:27:24 GMT-0300 (GMT-03:00)
+[debug] [2020-01-30T12:27:24.635Z] ----------------------------------------------------------------------
+[debug] [2020-01-30T12:27:24.636Z] 
+[debug] [2020-01-30T12:27:24.644Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-01-30T12:27:24.645Z] > authorizing via signed-in user
+[debug] [2020-01-30T12:27:24.645Z] [iam] checking project finger-food for permissions ["firebase.projects.get"]
+[debug] [2020-01-30T12:27:24.646Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-01-30T12:27:24.646Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-01-30T12:27:24.837Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-30T12:27:24.855Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/finger-food:testIamPermissions  
+
+[debug] [2020-01-30T12:27:26.368Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-30T12:27:26.371Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/finger-food  
+ 
+[debug] [2020-01-30T12:27:27.851Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\Monica\Desktop\laboratoria\SCL012-Social-Network'...
+[info] 
+[debug] [2020-01-30T12:27:27.861Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/finger-food/webApps/-/config  
+ 
+[debug] [2020-01-30T12:27:29.195Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: src
+[info] +  hosting: Local server: http://localhost:5000
+>>>>>>> fc06545eeddf16bc2e4c9919deb0f6e3570f7914
