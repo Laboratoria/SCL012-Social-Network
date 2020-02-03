@@ -278,10 +278,13 @@ hr {
 }
 
 .uploadImg {
+  display: flex;
+  width: 40%;
   padding: 5px 10px;
   background: #E58E00;
   color:#fff;
   border:0px solid #fff;
+  border-radius: 0.312rem;
 }
 
 .uploadImg:hover{
@@ -319,12 +322,14 @@ footer {
   color: white;
   opacity: .5;
 }
-
+/*
 .message {
   width: 60%;
 }
+*/
 /* Posts style */
 .postPage, .divPost {
+  margin: auto;
   display: block;
   width: 40%;
   background-color: #ffffff;
@@ -341,10 +346,10 @@ footer {
   margin: 2% 0%;
 }
 .submit, .upload {
-  display: inline-block;
+  display: flex;
   border: none;
   width: 20%;
-  color: black;
+  color: #ffffff;
   font-size: 13px;
   background: #aaa;
   padding: 0.3125rem;
