@@ -3,6 +3,7 @@ import {
   signInNew,
   signIn,
   signOff,
+  recoverPass,
 } from './lib/index.js';
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
@@ -56,6 +57,18 @@ function init() {
   }
 
   start();
+
+  const recover = document.getElementById('login__recover');
+  const loginEmail = document.getElementById('login__email');
+
+  recover.addEventListener('click', () => {
+    if (loginEmail.value === '') {
+      alert('Ingrese su email');
+    } else {
+      recoverPass(loginEmail.value);
+      loginEmail.value = '';
+    }
+  });
 
   function newPage(displayName, email) {
     window.location.hash = '/home';

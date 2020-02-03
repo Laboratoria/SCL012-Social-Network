@@ -85,7 +85,7 @@ export const recoverPass = (emailAddress) => {
   auth.sendPasswordResetEmail(emailAddress)
     .then(function () {
       // Email sent.
-      alert('Se ha enviado un correo a su cuenta. Por favor, sigue los pasos indicados');
+      alert('Se ha enviado un correo a su cuenta para restablecer contraseña');
     })
     .catch((error) => {
       console.log(error);
@@ -95,6 +95,8 @@ export const recoverPass = (emailAddress) => {
       console.log(errorMessage);
       if (errorCode === 'auth/user-not-found') {
         alert('Usuario no encontrado. Ingrese email válido.');
+      } else if (errorCode === 'auth/invalid-email') {
+        alert('Ingrese email válido');
       }
     });
 };
