@@ -58,6 +58,8 @@ function init() {
 
   start();
 
+  /* Restablecer contraseña */
+
   const recover = document.getElementById('login__recover');
   const loginEmail = document.getElementById('login__email');
 
