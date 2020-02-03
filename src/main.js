@@ -15,15 +15,10 @@ const db = firebase.firestore();
 
 function init() {
   const root = document.getElementById('root');
-  const contact = document.getElementById('contact');
-  contact.innerHTML = `
-    <footer id="contact" class="contact">
-    <p> Finger Food 2020. Todos los derechos reservados.</p>
-    </footer>`;
 
   /* Formulario login */
   function start() {
-   // window.location.hash = '/login';
+    window.location.hash = '/login';
     root.innerHTML = `
     <section class="login" id="login">
       <img src="img/logo2.png" alt="logo Finger Food" class="login__logo">
@@ -65,7 +60,7 @@ function init() {
   /* Restablecer contraseña */
   const recover = document.getElementById('login__recover');
   const loginEmail = document.getElementById('login__email');
-  // window.location.hash = '/forgot';
+
   recover.addEventListener('click', () => {
     if (loginEmail.value === '') {
       alert('Ingrese su email');
@@ -77,7 +72,7 @@ function init() {
 
   /* Ingreso a home */
   function newPage(displayName, email) {
-   // window.location.hash = '/home';
+    window.location.hash = '/home';
     root.innerHTML = `
     <nav class="navi">
     <img src="img/logo2.png" alt="logo" class="logoNav">
@@ -96,25 +91,23 @@ function init() {
       <div id="wrap"></div>
     </section>
     `;
+
     // funcionalidad boton + (crear post)
     const createPost = document.querySelector('#plus');
     createPost.addEventListener('click', () => {
       const viewPost = document.querySelector('#wrap');
       viewPost.innerHTML = `<section class="postPage" id="postPage">
       <div id="addPost">
-        <input type="text" name="message" id="message" class="message" placeholder="Escribe aquí"></input>
-        <!-- Boton subir imagen -->
+        <input type="text" name="message" id="message" class="message" placeholder="Recomienda lugar"></input>
         <label for="fileUpload" class="uploadImg"  title="Formato png/jpg">
         <i class="fas fa-cloud-upload-alt"></i> Subir imagen
         </label>
         <input id="fileUpload" accept=".png, .jpg" type="file" style='display: none;'/ required>
-        <div id="infoFile" class="infoFile"></div>
-        <!-- Boton publicar post -->
+          <div id="infoFile" class="infoFile"></div>
         <button name="submit" id="submit" class="submit">Publicar</button>
       </div>
       </section>
-    ` 
-    /* boton upload image */
+    `
     const fileUpload = document.getElementById('fileUpload');
     let file;
     fileUpload.addEventListener('change', changeImg)
@@ -126,13 +119,74 @@ function init() {
     /* nombre archivo */
     document.getElementById('infoFile').innerHTML = fileEntered;
     }
-    /* boton publicar post */
+    
+
+
     let submitPost = document.querySelector('#submit');
     submitPost.addEventListener('click', () => {
-    let publicPost = document.querySelector('#wrap');
-    const message = document.querySelector('#message').value;
+     // const emailIngreso = document.getElementById('login__email').value;
+      let publicPost = document.querySelector('#wrap');
+      const message = document.querySelector('#message').value;
+
+      function uploadImg() {
+        if (fileUpload.value === '' || commentary.value === '') {
+          alert('Complete los campos');
+        } else {
+          /* id único archivo - aleatorio */
+          const id = Math.random().toString(36).substring(2);
+          /* Ruta: Creación/ubicación de carpeta y nombre de archivo con el que se guardará */
+          const filePath = `upload/food_${id}`;
+          /* Referencia en storage a ruta */
+          const storageRef = storage.ref(filePath);
+          /* Subida de fichero con ruta y datos archivo */
+          /* const task = this.storage.upload(filePath, file); */
+          const uploadTask = storageRef.put(file);
+          /* Recuperar URL para guardar en base de datos */
     
- 
+          // Register three observers:
+          // 1. 'state_changed' observer, called any time the state changes
+          // 2. Error observer, called on failure
+          // 3. Completion observer, called on successful completion
+          uploadTask.on('state_changed', function (snapshot) {
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+              case firebase.storage.TaskState.PAUSED: // or 'paused'
+                console.log('Upload is paused');
+                break;
+              case firebase.storage.TaskState.RUNNING: // or 'running'
+                console.log('Upload is running');
+                break;
+            }
+          }, function (error) {
+            // Handle unsuccessful uploads
+          }, function () {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+              console.log('Archivo disponible en ', downloadURL);
+    
+              /* Guardar en base de datos nuevo post con imagen y comentario */
+              db.collection('newPost').add({
+                  image: downloadURL,
+                  commentary: commentary.value,
+                })
+                .then(function (docRef) {
+                  console.log("Document written with ID: ", docRef.id);
+                })
+                .catch(function (error) {
+                  console.error("Error adding document: ", error);
+                })
+    
+              /* Publicar */
+            });
+          });
+        }
+    
+      }
+     // let database = firebase.firestore();
         db.collection("posts").add({
         author: displayName,
         message: message,
@@ -141,11 +195,11 @@ function init() {
         console.log("Document written with ID: ", docRef.id);
         console.log(displayName);
         console.log(message);
+        // document.getElementById('message') = '';
       })
       .catch(function(error) {
         console.error("Error adding document: ", error);
       });
-      // el div que se imprime en pantalla
       let printAuthor = displayName;
       const printMessage = document.querySelector('#message').value;
       publicPost.innerHTML = `<div id="divPost" class="divPost">
@@ -154,12 +208,14 @@ function init() {
       <input type="text" id="printMsg" class="printMsg" value="${printMessage}"></input>
       </div>
       `;
+     });
+     // let database = firebase.firestore();
      db.collection("posts").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
           console.log(`${doc.id} => ${doc.data()}`);
       });
-     });
-    });
+  });
+    
  });
 /* Cerrar sesión */
 
@@ -170,10 +226,11 @@ function init() {
     /* Chequear rememberMe - recargar pagina */
     /* Pasar a página inicial */
     start();
-   // window.location.reload();
+    window.location.reload();
   });
  }
-
+   
+    
   /* Ingreso usuario existente */
   const emailInput = document.getElementById('login__email');
   console.log(emailInput);
@@ -256,7 +313,7 @@ function init() {
   const loginRegister = document.getElementById('login__btnRegister');
   loginRegister.addEventListener('click', () => {
     /* Formulario registro */
-    // window.location.hash = '/register';
+    window.location.hash = '/register';
     root.innerHTML = `
     <section class="register" id="register">
       <img src="img/logo2.png" alt="logo Finger Food" class="register__logo">
@@ -298,8 +355,8 @@ function init() {
 
       signInNew(userName.value, emailRegister.value, passRegister.value);
       /* Guardar datos registro */
-      /*
-      function save(name, email) {
+
+     /* function save(name, email) {
          db.collection('users').add({
              userName: name,
              userEmail: email,
@@ -310,9 +367,9 @@ function init() {
            .catch(function (error) {
                console.error("Error adding document: ", error);
            })
-       }; */
+       };
        /* Guardar si se envia mail de verificación */
-       // save(userName.value, emailRegister.value); 
+      /* save(userName.value, emailRegister.value);*/
       start();
     });
   });
@@ -364,10 +421,34 @@ window.addEventListener('hashchange', () => {
   } else if (window.location.hash === '#/forgot') {
     //function
   }
-});
-*/
+});*/
 }
-
 window.onload = init();
 
 /*---------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

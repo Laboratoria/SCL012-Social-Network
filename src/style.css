@@ -361,4 +361,9 @@ footer {
   background: #E58E00;
   transition: background .5s;
 }
-
+@media only screen and (max-width: 385px) {
+  .postPage, .divPost {
+    width: 80%;
+  }
+  
+}
