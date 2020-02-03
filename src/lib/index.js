@@ -37,11 +37,11 @@ export const verificationEmail = () => {
 export const signInNew = (name, email, password) => {
 
   firebase.auth().createUserWithEmailAndPassword(email, password)
-    /*.then((result) => {
-      return result.user.updateProfile({
+    .then((result) => {
+      result.user.updateProfile({
         displayName: name,
       });
-    })*/
+    })
     .then(() => {
       // Update successful.
       verificationEmail();

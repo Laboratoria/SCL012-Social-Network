@@ -102,7 +102,7 @@ function init() {
     closeSession.addEventListener('click', () => {
       /* cerrar sesión de usuario */
       signOff();
-      /* Chequear rememberMe */
+      /* Chequear rememberMe - recargar pagina */
       /* Pasar a página inicial */
       start();
     });
