@@ -105,6 +105,7 @@ function init() {
       /* Chequear rememberMe - recargar pagina */
       /* Pasar a página inicial */
       start();
+      window.location.reload();
     });
 
 
@@ -267,18 +268,17 @@ function init() {
         console.log(isAnonymous);
         let uid = user.uid;
         console.log(uid);
-        let providerData = user.providerData;
+        const providerData = user.providerData[0];
         console.log(providerData);
-        if (emailVerified) {
+        if (emailVerified || providerData.providerId === 'facebook.com') {
           if (displayName === null) {
             displayName = '';
           }
           newPage(displayName, email);
-        } else if (!emailVerified) {
+        } else {
           signOff();
           start();
         }
-
       } else {
         // User is signed out;
         console.log('no existe usuario activo');
