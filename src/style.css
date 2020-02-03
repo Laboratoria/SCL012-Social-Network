@@ -51,7 +51,7 @@ body {
   text-align: right;
 }
 
-.login__inputMail, .login__inputPassword, .login__inputName, .register__inputMail, .register__inputPassword, .register__inputName {
+.login__inputMail, .login__inputPassword, .register__inputName, .register__inputMail, .register__inputPassword, .register__inputName {
   margin-bottom: 0.9375rem;
   border: 1px solid #fff;
 }
@@ -243,7 +243,7 @@ hr {
 }
 
 /* Tarjetas */
-.wrap {
+#viewPost {
   margin: 50px auto 20px;
   display: flex;
   justify-content: center;
@@ -263,4 +263,54 @@ hr {
   .inputSearch {
     width: 60%;
   }
+}
+
+.containerPost {
+  width: 350px;
+  padding: 1rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.uploadImg {
+  padding: 5px 10px;
+  background: #E58E00;
+  color:#fff;
+  border:0px solid #fff;
+}
+
+.uploadImg:hover{
+  color:#fff;
+  background: #aaa;
+}
+
+.inputImg, .btnOk {
+  display: block;
+  margin: 1rem auto;
+  height: 2rem;
+  padding: 1rem;
+  align-items: center;
+}
+
+.infoFile {
+  padding: 1rem;
+}
+
+.inputArea {
+  display: block;
+  margin: 1rem auto;
+  width: 16rem;
+  height: 6rem;
+  background-color: #fff;
+  opacity: .5;
+}
+
+footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+  opacity: .5;
 }

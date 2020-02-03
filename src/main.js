@@ -5,12 +5,20 @@ import {
   signOff,
 } from './lib/index.js';
 
+// Get a reference to the storage service, which is used to create references in your storage bucket
+const storage = firebase.storage();
+
+// Initialize Firestore
+const db = firebase.firestore();
 /*---------------------------------------------------------------------------------*/
 
 function init() {
   const root = document.getElementById('root');
+  const contact = document.getElementById('contact');
+
   /* Formulario login */
   function start() {
+    window.location.hash = '';
     root.innerHTML = `
     <section class="login" id="login">
       <img src="img/logo2.png" alt="logo Finger Food" class="login__logo">
@@ -50,13 +58,14 @@ function init() {
   start();
 
   function newPage(displayName, email) {
+    window.location.hash = '/wall';
     root.innerHTML = `
     <nav class="navi">
     <img src="img/logo2.png" alt="logo" class="logoNav">
     <div class="navigation">
       <ul class="navigation__list">
         <li class="navigation__item"><a href="#divSearch"><i class="fas fa-search icon"></i></a></li>
-        <li class="navigation__item"><a href="#"><i class="fas fa-plus icon"></i></a></li>
+        <li class="navigation__item"><a href="#" id="plus"><i class="fas fa-plus icon"></i></a></li>
         <li class="navigation__item"><a href="#"><i class="fas fa-user-circle fa-2x icon"></i></a></li>
         <li class="navEmail"> ${email} </li>
         <li class="navigation__item icon"><a id="closeSession" href="#"><i class="far fa-times-circle fa-2x icon"></i></a></li>
@@ -65,26 +74,11 @@ function init() {
   </nav>
 
   <section class="main">
-    <h1 class="welcome">Bienvenid@ <span> ${displayName} </span> </h1>
-    <div class="typeSelect">
-      <select id="typeFood" class="typeFood">
-        <option value="all">Tipos de comida</option>
-        <option value="rapida">Comida Rápida</option>
-        <option value="saludable">Comida Saludable</option>
-        <option value="China">Comida China</option>
-        <option value="mexicana">Comida Mexicana</option>
-        <option value="peruana">Comida Peruana</option>
-      </select>
-    </div>
-    <div class="inputSearch" id="divSearch">
-       <i class="fas fa-search icon"></i>
-       <input type="text" class="inputText" id="inputSearch" placeholder="Buscar">
-     </div>
-  </section>
-  <div id="wrap" class="wrap"></div>
-  <footer id="contact" class="contact">
-    <p> Finger Food 2020. Todos los derechos reservados.</p>
-  </footer>`;
+   <h1 class="welcome">Bienvenid@ <span> ${displayName} </span> </h1>     
+  </section>`;
+
+    contact.innerHTML = `
+     <footer> Finger Food 2020. Todos los derechos reservados.</footer>`;
 
     /* Cerrar sesión */
     const closeSession = document.getElementById('closeSession');
@@ -94,6 +88,101 @@ function init() {
       signOff();
       /* Pasar a página inicial */
       start();
+    });
+
+    const plus = document.querySelector('#plus');
+    const viewPost = document.getElementById('viewPost');
+
+    plus.addEventListener('click', () => {
+      /* Mostrar post */
+      viewPost.innerHTML = `
+      <div class="containerPost">
+        <label for="fileUpload" class="uploadImg"  title="Formato png/jpg">
+         <i class="fas fa-cloud-upload-alt"></i> Subir imagen
+        </label>
+        <input id="fileUpload" accept=".png, .jpg" type="file" style='display: none;'/ required>
+        <div id="infoFile" class="infoFile"></div>
+        <textarea class="inputArea" placeholder="Ingrese comentario" id="commentary" maxlength="1000"></textarea>
+        <button class="btnOk" id="btnOk"> Ingresar </button>
+      </div>`;
+
+      const fileUpload = document.getElementById('fileUpload');
+      let file;
+      let imageUpload;
+      const commentary = document.getElementById('commentary');
+      const btnOk = document.getElementById('btnOk');
+
+      fileUpload.addEventListener('change', changeImg);
+      btnOk.addEventListener('click', uploadImg);
+
+      /* Cambiar estética input */
+      function changeImg() {
+        file = fileUpload.files[0];
+        console.log(file);
+        const fileEntered = document.getElementById('fileUpload').files[0].name;
+        /* nombre archivo */
+        document.getElementById('infoFile').innerHTML = fileEntered;
+      }
+
+      function uploadImg() {
+        if (fileUpload.value === '' || commentary.value === '') {
+          alert('Complete los campos');
+        } else {
+          /* id único archivo - aleatorio */
+          const id = Math.random().toString(36).substring(2);
+          /* Ruta: Creación/ubicación de carpeta y nombre de archivo con el que se guardará */
+          const filePath = `upload/food_${id}`;
+          /* Referencia en storage a ruta */
+          const storageRef = storage.ref(filePath);
+          /* Subida de fichero con ruta y datos archivo */
+          /* const task = this.storage.upload(filePath, file); */
+          const uploadTask = storageRef.put(file);
+          /* Recuperar URL para guardar en base de datos */
+
+          // Register three observers:
+          // 1. 'state_changed' observer, called any time the state changes
+          // 2. Error observer, called on failure
+          // 3. Completion observer, called on successful completion
+          uploadTask.on('state_changed', function (snapshot) {
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+              case firebase.storage.TaskState.PAUSED: // or 'paused'
+                console.log('Upload is paused');
+                break;
+              case firebase.storage.TaskState.RUNNING: // or 'running'
+                console.log('Upload is running');
+                break;
+            }
+          }, function (error) {
+            // Handle unsuccessful uploads
+          }, function () {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+              console.log('Archivo disponible en ', downloadURL);
+
+              /* Guardar en base de datos nuevo post con imagen y comentario */
+              db.collection('newPost').add({
+                  image: downloadURL,
+                  commentary: commentary.value,
+                })
+                .then(function (docRef) {
+                  console.log("Document written with ID: ", docRef.id);
+                })
+                .catch(function (error) {
+                  console.error("Error adding document: ", error);
+                })
+            });
+          });
+
+        }
+
+      }
+
+
     });
   }
 
@@ -132,7 +221,7 @@ function init() {
         let providerData = user.providerData;
         console.log(providerData);
         if (emailVerified) {
-          if(displayName === null){
+          if (displayName === null) {
             displayName = '';
           }
           newPage(displayName, email);
@@ -155,12 +244,17 @@ function init() {
 
   loginRegister.addEventListener('click', () => {
     /* Formulario registro */
+    window.location.hash = '/register';
     root.innerHTML = `
     <section class="register" id="register">
       <img src="img/logo2.png" alt="logo Finger Food" class="register__logo">
       <h1 class="register__title">Regístrate!</h1>
       <form class="register__form">
         <div class="register__container">
+          <div class="register__inputName">
+            <i class="fas fa-user icon"></i>
+            <input type="text" class="register__inputText" id="register__name" placeholder="Nombre y apellido">
+          </div>
           <div class="register__inputMail">
             <i class="fas fa-envelope icon"></i>
             <input type="email" class="register__inputText" id="register__email" placeholder="Correo Electrónico">
@@ -177,18 +271,36 @@ function init() {
     `;
     /* Guardar nuevo usuario */
     /* const userName = document.getElementById('register__name').value; */
-    const emailRegistro = document.getElementById('register__email');
-    console.log(emailRegistro);
-    const passRegistro = document.getElementById('register__pass');
-    console.log(passRegistro);
+    const userName = document.getElementById('register__name');
+    console.log(userName);
+    const emailRegister = document.getElementById('register__email');
+    console.log(emailRegister);
+    const passRegister = document.getElementById('register__pass');
+    console.log(passRegister);
     const registerBtn = document.getElementById('register__btn');
     console.log(registerBtn);
 
     registerBtn.addEventListener('click', () => {
       /* Verificar que no existe usuario */
       /* Guardar */
-      signInNew(emailRegistro.value, passRegistro.value);
-      /* Pasar a página de post */
+      signInNew(userName.value, emailRegister.value, passRegister.value);
+      /* Guardar datos registro */
+
+      /* function save(name, email) {
+         db.collection('users').add({
+             userName: name,
+             userEmail: email,
+           })
+           .then(function (docRef) {
+             console.log("Document written with ID: ", docRef.id);
+           })
+           .catch(function (error) {
+               console.error("Error adding document: ", error);
+           })
+       };
+       /* Guardar si se envia mail de verificación */
+      /* save(userName.value, emailRegister.value);*/
+      start();
     });
   });
 

@@ -7,7 +7,6 @@ export const myFunction = () => {
 */
 
 /* Loguear usuario existente */
-
 export const signIn = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .catch((error) => {
@@ -23,7 +22,7 @@ export const signIn = (email, password) => {
 // Envío de mail de verificación
 export const verificationEmail = () => {
   const user = firebase.auth().currentUser;
-
+  console.log(user);
   user.sendEmailVerification()
     .then(() => {
       // Email sent.
@@ -36,13 +35,14 @@ export const verificationEmail = () => {
 };
 
 /* Registro nuevo usuario */
-export const signInNew = (email, password) => {
+export const signInNew = (name, email, password) => {
+
   firebase.auth().createUserWithEmailAndPassword(email, password)
-    /* .then((user) => {
-      user.updateProfile({
-        displayName: userName,
+    /*.then((result) => {
+      return result.user.updateProfile({
+        displayName: name,
       });
-    }) */
+    })*/
     .then(() => {
       // Update successful.
       verificationEmail();
@@ -78,3 +78,25 @@ export const signOff = () => {
       console.log(error);
     });
 };
+
+/* Reestablecer contraseña */
+export const recoverPass = (emailAddress) => {
+  let auth = firebase.auth();
+  auth.sendPasswordResetEmail(emailAddress)
+    .then(function () {
+      // Email sent.
+      alert('Se ha enviado un correo a su cuenta. Por favor, sigue los pasos indicados');
+    })
+    .catch((error) => {
+      console.log(error);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      if (errorCode === 'auth/user-not-found') {
+        alert('Usuario no encontrado. Ingrese email válido.');
+      }
+    });
+};
+
+// Crear Post
