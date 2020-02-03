@@ -81,26 +81,61 @@ function init() {
        <input type="text" class="inputText" id="inputSearch" placeholder="Buscar">
      </div>
   </section>
-  <div id="wrap" class="wrap"></div>
+    <div id="wrap" class="wrap"></div>
   <footer id="contact" class="contact">
     <p> Finger Food 2020. Todos los derechos reservados.</p>
   </footer>`;
     // funcionalidad boton + (crear post)
     const createPost = document.querySelector('#createPost');
     createPost.addEventListener('click', () => {
-      const postDiv = document.querySelector('#wrap');
-      postDiv.innerHTML = `<section class="postPage" id="postPage">
+      const viewPost = document.querySelector('#wrap');
+      viewPost.innerHTML = `<section class="postPage" id="postPage">
       <div id="addPost">
-        <textarea name="message" id="message" class="message"></textarea>
+        <input type="text" name="message" id="message" class="message" placeholder="Recomienda lugar"></input>
+        <button name="upload" id="upload" class="upload">Carga imagen</button>
         <button name="submit" id="submit" class="submit">Publicar</button>
       </div>
-    </section>
-    `;
+      </section>
+    `
+    let submitPost = document.querySelector('#submit');
+    submitPost.addEventListener('click', () => {
+     // const emailIngreso = document.getElementById('login__email').value;
+      let publicPost = document.querySelector('#wrap');
+      const message = document.querySelector('#message').value;
+      let database = firebase.firestore();
+      database.collection("posts").add({
+        author: displayName,
+        message: message,
+      })
+      .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        console.log(displayName);
+        console.log(message);
+        // document.getElementById('message') = '';
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+      let printAuthor = displayName;
+      const printMessage = document.querySelector('#message').value;
+      publicPost.innerHTML = `<div id="divPost" class="divPost">
+      <a href="#" id="editPost" class="editPost"><i class="fas fa-pencil-alt"></i></a>
+      <p>${printAuthor}</p>
+      <input type="text" id="printMsg" class="printMsg" value="${printMessage}"></input>
+      </div>
+      `;
+     });
+     let database = firebase.firestore();
+     database.collection("posts").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data()}`);
+      });
+  });
+    
     });
-
-    /* Cerrar sesión */
+    
+/* Cerrar sesión */
     const closeSession = document.getElementById('closeSession');
-
     closeSession.addEventListener('click', () => {
       /* cerrar sesión de usuario */
       signOff();
@@ -108,8 +143,7 @@ function init() {
       start();
     });
   }
-
-
+     
   /* Ingreso usuario existente */
   const emailIngreso = document.getElementById('login__email');
   console.log(emailIngreso);
@@ -199,6 +233,16 @@ function init() {
       /* Verificar que no existe usuario */
       /* Guardar */
       signInNew(emailRegistro.value, passRegistro.value);
+      let database = firebase.firestore();
+      database.collection("users").add({
+        userEmail: emailRegistro.value,
+      })
+      .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
       /* Pasar a página de post */
     });
   });
