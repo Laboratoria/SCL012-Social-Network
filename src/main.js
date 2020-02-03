@@ -106,7 +106,7 @@ function init() {
         <input id="fileUpload" accept=".png, .jpg" type="file" style='display: none;'/ required>
         <div id="infoFile" class="infoFile"></div>
         <textarea class="inputArea" placeholder="Ingrese comentario" id="commentary" maxlength="1000"></textarea>
-        <button class="btnOk" id="btnOk"> Ingresar </button>
+        <button class="btnOk" id="btnOk"> Postear </button>
       </div>`;
 
       const fileUpload = document.getElementById('fileUpload');
