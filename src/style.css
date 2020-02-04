@@ -363,7 +363,7 @@ footer {
 }
 @media only screen and (max-width: 385px) {
   .postPage, .divPost {
-    width: 80%;
+    width: 200px;
   }
   .printMsg {
     width: 70%;

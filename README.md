@@ -82,9 +82,7 @@ Prototipo
 
 Si bien tuvimos un prototipo de alta fidelidad desde el comienzo, fue para poder iterando con nuestros usuarios, para tener una idea de que es lo que queriamos mas o menos. 
 
-IMAGEN DE APP LISTA
-IMAGEN DE APP LISTA
-IMAGEN DE APP LISTA
+![ Mockup](/src/img/finger-food-facebook.jpg)
 
 
 
