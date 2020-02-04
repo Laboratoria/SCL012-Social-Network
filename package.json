@@ -13,7 +13,7 @@
     "htmlhint": "htmlhint dist/*.html ",
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
-    "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
+
     "test": "jest --coverage",
     "start": "serve src/"
   },
@@ -32,5 +32,20 @@
     "serve": "^11.0.2",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "firebase": "^7.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdiniscia/SCL012-Social-Network.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/bdiniscia/SCL012-Social-Network/issues"
+  },
+  "homepage": "https://github.com/bdiniscia/SCL012-Social-Network#readme"
 }

@@ -3,10 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css"/>
+
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet"> 
+  <title>Viviendo en Chile</title>
 </head>
 <body>
-  <script type="module" src="main.js"></script>
+  
+  <!--Desde aquí empiezan los JS-->
+  
+  <section id="authSection"></section>
+
+  <div id="contentPage"></div>
+  
+  <section id="mainContent">
+      <div id="contentPost"></div>
+
+      <div id="contentMessage"></div>
+
+      <div id="contentCategory"></div>
+  </section>
+
+  
+  <!--Desde aquí empiezan los JS-->
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-database.js"></script>
+ 
+ 
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use 
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBqerhWyJmwk6Xs4WCsxoAHgf_rOScPtS4",
+      authDomain: "red-social-94f04.firebaseapp.com",
+      databaseURL: "https://red-social-94f04.firebaseio.com",
+      projectId: "red-social-94f04",
+      storageBucket: "red-social-94f04.appspot.com",
+      messagingSenderId: "128282217223",
+      appId: "1:128282217223:web:5ba4bcdb5ad24e5eedd3a2"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <script type="module" src="main.js"></script>  
+
 </body>
 </html>
