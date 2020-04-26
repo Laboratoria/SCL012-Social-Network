@@ -75,19 +75,20 @@ function init() {
     window.location.hash = '/home';
     root.innerHTML = `
     <nav class="navi">
-    <img src="img/logo2.png" alt="logo" class="logoNav">
-    <div class="navigation">
-      <ul class="navigation__list">
-        <li class="navigation__item"><a href="#divSearch"><i class="fas fa-search icon"></i></a></li>
-        <li class="navigation__item"><a href="#" id="plus"><i class="fas fa-plus icon"></i></a></li>
-        <li class="navigation__item"><a href="#"><i class="fas fa-user-circle fa-2x icon"></i></a></li>
-        <li class="navEmail"> ${email} </li>
-        <li class="navigation__item icon"><a id="closeSession" href="#"><i class="far fa-times-circle fa-2x icon"></i></a></li>
-      </ul>
-    </div>
+      <img src="img/logo2.png" alt="logo" class="logoNav">
+      <div class="navigation">
+        <ul class="navigation__list">
+          <li class="navigation__item"><a href="#divSearch"><i class="fas fa-search icon"></i></a></li>
+          <li class="navigation__item"><a href="#" id="plus"><i class="fas fa-plus icon"></i></a></li>
+          <li class="navigation__item"><a href="#"><i class="fas fa-user-circle fa-2x icon"></i></a></li>
+          <li class="navEmail"> ${email} </li>
+          <li class="navigation__item icon"><a id="closeSession" href="#"><i class="far fa-times-circle fa-2x icon"></i></a></li>
+        </ul>
+      </div>
     </nav>
     <section class="main">
       <h1 class="welcome" id="welcome">Bienvenid@ <span> ${displayName} </span> </h1>
+      <! -- div del post --> 
       <div id="wrap"></div>
     </section>
     `;
@@ -359,12 +360,9 @@ function init() {
 
     registerBtn.addEventListener('click', () => {
       /* Verificar que no existe usuario */
-      /* Guardar */
-
       signInNew(userName.value, emailRegister.value, passRegister.value);
-      /* Guardar datos registro */
-
-     /* function save(name, email) {
+      
+      function save(name, email) {
          db.collection('users').add({
              userName: name,
              userEmail: email,
@@ -377,7 +375,7 @@ function init() {
            })
        };
        /* Guardar si se envia mail de verificación */
-      /* save(userName.value, emailRegister.value);*/
+       save(userName.value, emailRegister.value);
       start();
     });
   });

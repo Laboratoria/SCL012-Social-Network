@@ -1,10 +1,10 @@
 /*Eliminar margen y padding que ponen navegadores por defecto*/
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
 }
 
 body {
@@ -20,352 +20,392 @@ body {
     background-repeat: no-repeat;
 }
 
-.login, .register {
-  width: 21.875rem;
-  margin: 0.625rem auto;
-  text-align: center;
-  color: white;
+.login,
+.register {
+    width: 21.875rem;
+    margin: 0.625rem auto;
+    text-align: center;
+    color: white;
 }
 
-.login__logo, .register__logo {
-  margin-top: 0.625rem;
-  width: 9.375rem;
+.login__logo,
+.register__logo {
+    margin-top: 0.625rem;
+    width: 9.375rem;
 }
 
-.login__title, .register__title {
-  font-size: 1.875rem;
+.login__title,
+.register__title {
+    font-size: 1.875rem;
 }
 
-.login__form, .register__form {
-  padding: 1.5625rem 0.625rem 0;
+.login__form,
+.register__form {
+    padding: 1.5625rem 0.625rem 0;
 }
 
-.login__inputText, .login__inputPass, .register__inputText, .register__inputPass {
-  font-size: 0.9375rem;
-  width: 80%;
-  padding: 0.625rem;
-  border: none;
+.login__inputText,
+.login__inputPass,
+.register__inputText,
+.register__inputPass {
+    font-size: 0.9375rem;
+    width: 80%;
+    padding: 0.625rem;
+    border: none;
 }
 
-.login__container, .register__container {
-  text-align: right;
+.login__container,
+.register__container {
+    text-align: right;
 }
 
-.login__inputMail, .login__inputPassword, .register__inputName, .register__inputMail, .register__inputPassword, .register__inputName {
-  margin-bottom: 0.9375rem;
-  border: 1px solid #fff;
+.login__inputMail,
+.login__inputPassword,
+.register__inputName,
+.register__inputMail,
+.register__inputPassword,
+.register__inputName {
+    margin-bottom: 0.9375rem;
+    border: 1px solid #fff;
 }
 
 .icon {
-  min-width: 3.125rem;
-  text-align: center;
-  vertical-align: middle;
-  color: #fff;
+    min-width: 3.125rem;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
 }
 
-.login__acceptService, .register__acceptService {
-  font-size: 12px;
-  text-align: center;
-  margin-bottom: 0.9375rem;
+.login__acceptService,
+.register__acceptService {
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 0.9375rem;
 }
 
-.login__button, .register__button {
-  border: none;
-  width: 30%;
-  color: black;
-  font-size: 15px;
-  background: #aaa;
-  padding: 0.625rem 0.3125rem;
-  border-radius: 0.3125rem;
-  cursor: pointer;
-  margin-left: 30%;
+.login__button,
+.register__button {
+    border: none;
+    width: 30%;
+    color: black;
+    font-size: 15px;
+    background: #aaa;
+    padding: 0.625rem 0.3125rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    margin-left: 30%;
 }
 
-.login__button:hover, .btn__rrss:hover, .register__button:hover {
-  background: #E58E00;
-  transition: background .5s;
+.login__button:hover,
+.btn__rrss:hover,
+.register__button:hover {
+    background: #E58E00;
+    transition: background .5s;
 }
 
-.login__divider, .register__divider {
-  text-align: center;
-  margin-top: 0.3125rem;
+.login__divider,
+.register__divider {
+    text-align: center;
+    margin-top: 0.3125rem;
 }
 
 hr {
-  display: inline-block;
-  width: 45%;  
+    display: inline-block;
+    width: 45%;
 }
 
 .btn__rrss {
-  padding: 0.3125rem 0.625rem;
-  margin: 0.3125rem 5%;
-  width: 20%;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
+    padding: 0.3125rem 0.625rem;
+    margin: 0.3125rem 5%;
+    width: 20%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
 
 }
 
 .btn__icon {
-  width: 3.125rem;
-  height: 3.125rem;
-  text-align: center;
-  vertical-align: middle;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
+    width: 3.125rem;
+    height: 3.125rem;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .login__forget {
-  margin: 1.25rem auto 0.625rem;
-  text-align: center;
+    margin: 1.25rem auto 0.625rem;
+    text-align: center;
 }
 
 .login__register {
-  margin: 1.25rem auto;
+    margin: 1.25rem auto;
 }
 
 .login__linkRecover {
-  margin-left: 0.625rem;
-  color: #aaa;
-  font-size: 17px;
+    margin-left: 0.625rem;
+    color: #aaa;
+    font-size: 17px;
 }
 
-.login__linkRecover:hover, .register__linkRecover:hover {
-  color: #E58E00;
+.login__linkRecover:hover,
+.register__linkRecover:hover {
+    color: #E58E00;
 }
 
 .login__linkRegister {
-  margin-left: 0.625rem;
-  color: #E58E00;
-  font-size: 17px;
+    margin-left: 0.625rem;
+    color: #E58E00;
+    font-size: 17px;
 }
 
-.login__linkRegister:hover, .register__linkRegister:hover {
-  color: #aaa;
+.login__linkRegister:hover,
+.register__linkRegister:hover {
+    color: #aaa;
 }
 
-.login__acceptService, .register__acceptService {
-  margin-top: 0.625rem;
+.login__acceptService,
+.register__acceptService {
+    margin-top: 0.625rem;
 }
 
 .accept {
-  margin-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 
 @media(min-width:768px) {
-  .login {
-    margin: 3.125rem auto;
-  }
+    .login {
+        margin: 3.125rem auto;
+    }
 }
 
 .main {
-  text-align: center;
+    text-align: center;
 }
 
 .logoNav {
-  width: 100px;
+    width: 100px;
 }
 
 .navi {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 1rem;
-  padding-right: 2rem;
-  border-bottom: 1px solid white;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    border-bottom: 1px solid white;
 }
 
 .navi h1 {
-  font-size: 24px;
-  font-weight: 700;
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .navigation__list {
-  list-style-type: none;
-  display: flex;
-  align-items: center;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
 }
 
 .navigation__item a {
-  text-decoration: none;
-  color: black;
-  font-weight: bolder;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
 }
 
 .navigation__item {
-  padding-right: 1em;
-  color: black;
+    padding-right: 1em;
+    color: black;
 }
 
 .navEmail {
-  margin-right: 1rem;
+    margin-right: 1rem;
 }
 
 .icon {
-  min-width: 3.125rem;
-  text-align: center;
-  vertical-align: middle;
-  color: #fff;
+    min-width: 3.125rem;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
 }
 
 .welcome {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .typeSelect {
-  display: inline-block;
-  margin-right: 2rem;
+    display: inline-block;
+    margin-right: 2rem;
 }
 
 .typeFood {
-  padding: 0.625rem;
+    padding: 0.625rem;
 }
 
 .inputSearch {
-  display: inline-block;
-  margin: 0 auto;
-  margin-bottom: 0.9375rem;
-  border: 1px solid #fff;
-  width: 20%;
+    display: inline-block;
+    margin: 0 auto;
+    margin-bottom: 0.9375rem;
+    border: 1px solid #fff;
+    width: 20%;
 }
 
 .inputText {
-  font-size: 0.9375rem;
-  width: 75%;
-  padding: 0.625rem;
-  border: none;
+    font-size: 0.9375rem;
+    width: 75%;
+    padding: 0.625rem;
+    border: none;
 }
 
 .contact {
-  margin: 5rem 0;
-  text-align: center;
-  color: white;
+    margin: 5rem 0;
+    text-align: center;
+    color: white;
 }
 
 /* Tarjetas */
 #viewPost {
-  margin: 50px auto 20px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+    margin: 50px auto 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 @media(max-width: 768px) {
-  .navEmail {
-    display: none;
-  }
+    .navEmail {
+        display: none;
+    }
 
-  .typeSelect {
-    display: block;
-    margin-bottom: 1rem;
-  }
+    .typeSelect {
+        display: block;
+        margin-bottom: 1rem;
+    }
 
-  .inputSearch {
-    width: 60%;
-  }
+    .inputSearch {
+        width: 60%;
+    }
 }
 
 .containerPost {
-  width: 350px;
-  padding: 1rem;
-  text-align: center;
-  margin: 1rem;
+    width: 350px;
+    padding: 1rem;
+    text-align: center;
+    margin: 1rem;
 }
 
 /* Evita desbordamiento del texto en div */
 .infoFile {
-  word-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .uploadImg {
-  display: flex;
-  width: 40%;
-  padding: 5px 10px;
-  background: #E58E00;
-  color:#fff;
-  border:0px solid #fff;
-  border-radius: 0.312rem;
+    display: flex;
+    width: 30%;
+    padding: 5px 10px;
+    background: #E58E00;
+    color: #fff;
+    border: 0px solid #fff;
+    border-radius: 0.312rem;
 }
 
-.uploadImg:hover{
-  color:#fff;
-  background: #aaa;
+.uploadImg:hover {
+    color: #fff;
+    background: #aaa;
 }
 
- .btnOk {
-  background-color: #aaa;
-  display: block;
-  margin: 1rem auto;
-  height: 2rem;
-  padding: 0 1rem;
-  line-height: 30px;
+.btnOk {
+    background-color: #aaa;
+    display: block;
+    margin: 1rem auto;
+    height: 2rem;
+    padding: 0 1rem;
+    line-height: 30px;
 }
 
 .infoFile {
-  padding: 1rem;
+    padding: 1rem;
+
 }
 
 .inputArea {
-  display: block;
-  margin: 1rem auto;
-  width: 16rem;
-  height: 6rem;
-  background-color: #fff;
-  opacity: .5;
+    display: block;
+    margin: 1rem auto;
+    width: 16rem;
+    height: 6rem;
+    background-color: #fff;
+    opacity: .5;
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  color: white;
-  opacity: .5;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    color: white;
+    opacity: .5;
 }
+
 /*
 .message {
   width: 60%;
 }
 */
 /* Posts style */
-.postPage, .divPost {
-  margin: auto;
-  display: block;
-  width: 40%;
-  background-color: #ffffff;
-  color: black;
-  padding: 1%;
+.postPage,
+.divPost {
+    margin: auto;
+    display: block;
+    width: 40%;
+    background-color: #ffffff;
+    color: black;
+    padding: 1%;
 }
+
 .editPost {
-  display: block;
-  float: right;
+    display: block;
+    float: right;
 }
-.message, .printMsg {
-  border: none;
-  outline: none;
-  margin: 2% 0%;
+
+.message,
+.printMsg {
+    border: none;
+    outline: none;
+    margin: 2% 0%;
 }
-.submit, .upload {
-  display: flex;
-  border: none;
-  width: 20%;
-  color: #ffffff;
-  font-size: 13px;
-  background: #aaa;
-  padding: 0.3125rem;
-  cursor: pointer;
-  margin: 1%;
-  border-radius: 0.312rem;
+
+.submit,
+.upload {
+    display: flex;
+    border: none;
+    width: 20%;
+    color: #ffffff;
+    font-size: 13px;
+    background: #aaa;
+    padding: 0.3125rem;
+    cursor: pointer;
+    margin: 1%;
+    border-radius: 0.312rem;
 }
-.submit:hover, .upload:hover {
-  background: #E58E00;
-  transition: background .5s;
+
+.submit:hover,
+.upload:hover {
+    background: #E58E00;
+    transition: background .5s;
 }
+
 @media only screen and (max-width: 385px) {
-  .postPage, .divPost {
-    width: 200px;
-  }
-  .printMsg {
-    width: 70%;
-  }
+
+    .postPage,
+    .divPost {
+        width: 200px;
+    }
+
+    .printMsg {
+        width: 70%;
+    }
+
+    .addPost {
+        width: 80% !important;
+
+    }
 }

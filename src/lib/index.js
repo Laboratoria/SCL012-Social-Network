@@ -44,6 +44,7 @@ export const signInNew = (name, email, password) => {
     })
     .then(() => {
       // Update successful.
+      // Envia email de verificacion
       verificationEmail();
     })
     .catch((error) => {
