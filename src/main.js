@@ -99,11 +99,11 @@ function init() {
       const viewPost = document.querySelector('#wrap');
       viewPost.innerHTML = `<section class="postPage" id="postPage">
       <div id="addPost">
-        <input type="text" name="message" id="message" class="message" placeholder="Recomienda lugar"></input>
-        
+        <input type="textarea" name="message" id="message" class="message" placeholder="Recomienda lugar"></input>
         <label for="fileUpload" class="uploadImg"  title="Formato png/jpg">
-        <i class="fas fa-cloud-upload-alt"></i> Subir imagen
+        <i class="fas fa-cloud-upload-alt"></i>  Subir imagen
         </label>
+        <hr style="width:50%;text-align:left;margin:10px 0 10px 0">
         <input id="fileUpload" accept=".png, .jpg" type="file" style='display: none;'/ required>
           <div id="infoFile" class="infoFile"></div>
         <button name="submit" id="submit" class="submit">Publicar</button>
@@ -186,7 +186,7 @@ function init() {
         }
     
       }
-     // let database = firebase.firestore();
+    
         db.collection("posts").add({
         author: displayName,
         message: message,
@@ -200,31 +200,32 @@ function init() {
       .catch(function(error) {
         console.error("Error adding document: ", error);
       });
+
       let printAuthor = displayName;
       const printMessage = document.querySelector('#message').value;
-      publicPost.innerHTML = `<div id="divPost" class="divPost">
-      <a href="#" id="editPost" class="editPost"><i class="fas fa-pencil-alt"></i></a>
-      <p>${printAuthor}</p>
-      <input type="text" id="printMsg" class="printMsg" value="${printMessage}"></input>
-      <button id="btnLike" id="btnLike" class="btnLike" > </button>
-      <p class= btnLike> <span id="mostrar"> </span> Me gusta </p>
-      </div>
-      `;
+      const postContent = document.querySelector('#divPost');
+      db.collection("posts").onSnapshot((querySnapshot) => {
+        postContent.innerHTML = '';
+        querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+        postContent.innerHTML += `<div id="divPost" class="divPost">
+          <a href="#" id="editPost" class="editPost"><i class="fas fa-pencil-alt"></i></a>
+          <p>${printAuthor}</p>
+          <input type="text" id="printMsg" class="printMsg" value="${printMessage}"></input></br>
+          <button id="btnLike" id="btnLike" class="btnLike" ><i class="far fa-laugh-wink"></i></button>
+          <p class="btnLike"> <span id="mostrar"> </span> Me gusta </p>
+          </div>
+          `;
+        });
       window.onload = function () {
         let contador = 0;
           document.getElementById("btnLike").onclick = function() {
           contador = contador++
           document.getElementById("mostrar").innerHTML;
           }
-      };
-     });
-     // let database = firebase.firestore();
-     db.collection("posts").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.data()}`);
+        };
       });
-  });
-    
+     });
  });
 /* Cerrar sesión */
 
@@ -363,6 +364,7 @@ function init() {
       signInNew(userName.value, emailRegister.value, passRegister.value);
       
       function save(name, email) {
+        const db = firebase.firestore();
          db.collection('users').add({
              userName: name,
              userEmail: email,
